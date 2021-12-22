@@ -1,0 +1,1626 @@
+<!doctype html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="favicon.ico" rel=icon type="image/ico" />
+    <title>Fatwra API</title>
+    <link rel="stylesheet" href="css/hightlightjs-dark.css?version=<?= time() ?>">
+    <link
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+      rel="stylesheet">
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/tomorrow-night-eighties.min.css"
+      rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani&display=swap"
+      rel="stylesheet">
+    <script>
+    hljs.configure({
+      tabReplace: '    ',
+    });
+    hljs.initHighlightingOnLoad();
+  </script>
+  </head>
+
+  <body data-spy="scroll" data-target=".scrollspy">
+
+    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+      data-target="#sidebar-wrapper"
+      aria-expanded="false">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+
+    <div id="sidebar-wrapper" class="collapse navbar-collapse">
+      <div class="scrollspy">
+        <div class="brand">
+          <div class="logo fallback">
+            <img src="./logo.png" alt="Fatwra API" class="logo img-responsive"
+              />
+          </div>
+          <h1>Fatwra API Documentation</h1>
+        </div>
+        <br>
+        <ul id="main-menu" data-spy="affix" class="nav">
+          <li>
+            <a href="#doc-general-notes">Get Starterd</a>
+          </li>
+          <li>
+            <a href="#doc-api-detail">Environment Details</a>
+          </li>
+          <li>
+            <a href="#folder-api">Main APIs</a>
+            <ul>
+              <li>
+                <a href="#request-api-login"><span class="req-POST text-lg">POST</span>
+                  Login</a>
+              </li>
+              <li>
+                <a href="#request-api-addbill"><span class="req-PUT text-lg">PUT</span>
+                  Add Bill</a>
+              </li>
+              <li>
+                <a href="#request-api-addservice"><span class="req-PUT text-lg">PUT</span>
+                  Add Service</a>
+              </li>
+
+              <li>
+                <a href="#request-api-getservice"><span class="req-GET text-lg">GET</span>
+                  Get Service</a>
+              </li>
+
+              <li>
+                <a href="#request-api-searchbill"><span class="req-GET text-lg">GET</span>
+                  Search Bill</a>
+              </li>
+              <li>
+                <a href="#request-api-searchbill11" style="display: none;"><span
+                    class="req-GET text-lg">GET</span> Search
+                  Bill</a>
+              </li>
+			  
+			    <li>
+                <a href="#request-api-webhook"><span class="req-GET text-lg">POST</span>
+                  Web Hook</a>
+              </li>
+			 
+            </ul>
+
+          </li>
+
+        </ul>
+      </div>
+
+    </div>
+
+    <div id="page-content-wrapper">
+      <div class="row general">
+        <div class="col-md-12">
+          <h2 id="doc-api-detail">
+            Get Starterd
+            <a href="#doc-api-detail"><i class="glyphicon glyphicon-link"></i></a>
+          </h2>
+          <br>
+          <p style="width:90%;">
+            The Rest API is the main way to get data into and out of fatwra
+            platform. It's an HTTP-based API that apps can
+            use to programmatically query data, create new bills, manage bills,
+            create services, and perform a wide
+            variety of other tasks.
+          </p>
+          <p style="width:90%;">
+            First to use these APIs, you need to obtain a <a href="#login"><strong>JWT
+                Token</strong></a>, then you can
+            use this Token as a Bearer Authorization in each request.
+          </p>
+          <br>
+
+          <h3 id="doc-api-detail">
+            Environment details
+            <a href="#doc-api-detail"><i class="glyphicon glyphicon-link"></i></a>
+          </h3>
+
+          <p style="font-size:13pt;">
+            Environment: UAT
+            <br>
+            Base API URL: <code class="higlighted">https://api-uat.fatwra.net</code>
+          </p>
+          <br>
+          <p style="font-size:13pt;">
+            Environment: Production
+            <br>
+            Base API URL: <code class="higlighted">https://api.fatwra.net</code>
+          </p>
+        </div>
+      </div>
+      <div class="split">
+        <div class="left">
+
+        </div>
+
+        <div class="right empty"></div>
+      </div>
+      <!-- BEGIN iterate through all groups -->
+
+      <div style="margin-top:3%;" class="endpoints-group">
+        <div class="split">
+          <div class="left">
+            <div class="headling row">
+              <h3 id="folder-api">
+                Main APIs
+                <a href="#folder-api"><i class="glyphicon glyphicon-link"></i></a>
+              </h3>
+            </div>
+
+            <div class="description"></div>
+          </div>
+
+          <div class="right empty"></div>
+        </div>
+
+        <!-- BEGIN iterate through all requests -->
+        <div class="split">
+          <div class="left">
+            <div id="login" class="headling row">
+              <h4 id="request-api-login">
+                Login
+                <a href="#request-api-login"><i class="glyphicon
+                    glyphicon-link"></i></a>
+              </h4>
+            </div>
+
+            <div class="description">
+              <p>Using <strong>Token</strong> API to obtain a JWT Token and
+                using it as header Bearer Authorization in
+                other APIs</p>
+
+              <table>
+                <thead>
+                  <tr>
+                    <th align="left">Parameters</th>
+                    <th align="left">Description</th>
+                    <th align="center">Status</th>
+                    <th align="center">Type</th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                  <tr>
+                    <td align="left">Username</td>
+                    <td align="left">Accept Phone Number, Email, Username</td>
+                    <td align="center">Required</td>
+                    <td align="center">String</td>
+                  </tr>
+
+                  <tr>
+                    <td align="left">Password</td>
+                    <td align="left"> Accept Numbers and Characters</td>
+                    <td align="center">Required</td>
+                    <td align="center">String</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="right empty"></div>
+        </div>
+
+        <div class="split">
+          <div class="left">
+            <div class="url row">
+              <h5>HTTP Request</h5>
+              <div class="col-xs-12">
+                <code><span class="req-POST text-lg">POST</span>
+                  {{BASE_URL}}/v1/api/Auth/Token</code>
+              </div>
+            </div>
+
+            <div class="headers row">
+              <h5>Headers</h5>
+
+              <div class="col-xs-12">
+                <code><span class="req-POST text-lg">Content-Type:
+                    application/json</code><br />
+                </div>
+
+              </div>
+
+              <div class="payload row">
+                <h5>PayLoad</h5>
+                <div class="col-xs-12">
+
+
+                  <pre><code>{
+  "username": "your-login-info@fatwra.net",
+  "password": "xxxxxxxx"
+}
+</code></pre>
+                </div>
+              </div>
+            </div>
+
+            <div class="right clearfix">
+              <!-- BEGIN example requests -->
+
+              <div class="request">
+                <h5>Example request</h5>
+                <ul class="nav nav-pills" role="tablist">
+                  <li role="presentation" class="active"><a
+                      href="#request-api-login-example-curl"
+                      data-toggle="tab">Curl</a></li>
+                  <li role="presentation"><a
+                      href="#request-api-login-example-PHP" data-toggle="tab">PHP</a></li>
+                  <li role="presentation"><a
+                      href="#request-api-login-example-Python"
+                      data-toggle="tab">Python</a></li>
+                  <li role="presentation"><a
+                      href="#request-api-login-example-Ruby" data-toggle="tab">Ruby</a></li>
+                  <li role="presentation"><a
+                      href="#request-api-login-example-Nodejs"
+                      data-toggle="tab">Nodejs</a></li>
+                  <li role="presentation"><a
+                      href="#request-api-login-example-Java" data-toggle="tab">Java</a></li>
+                  <li role="presentation"><a href="#request-api-login-example-C"
+                      data-toggle="tab">C#</a></li>
+                  <li role="presentation"><a
+                      href="#request-api-login-example-Javascript"
+                      data-toggle="tab">Javascript</a>
+                  </li>
+                </ul>
+                <div class="tab-content">
+                  <div class="tab-pane active"
+                    id="request-api-login-example-curl">
+                    <pre><code class="hljs curl">curl --location --request POST '{{BASE_URL}}/v1/api/Auth/Token' \
+              --header 'Content-Type: application/json' \
+              --data-raw '{
+                  "username": "your-login-info@fatwra.net",
+                  "password": "xxxxxxxx"
+              }'</code></pre>
+                  </div>
+                  <div class="tab-pane" id="request-api-login-example-PHP">
+                    <pre><code class="hljs PHP">
+              $curl = curl_init();
+curl_setopt_array($curl, array(
+  CURLOPT_URL => "{{BASE_URL}}/v1/api/Auth/Token",
+  CURLOPT_RETURNTRANSFER => true,
+  CURLOPT_ENCODING => "",
+  CURLOPT_MAXREDIRS => 10,
+  CURLOPT_TIMEOUT => 0,
+  CURLOPT_FOLLOWLOCATION => true,
+  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+  CURLOPT_CUSTOMREQUEST => "POST",
+  CURLOPT_POSTFIELDS =>"{\r\n    \"username\": \"your-login-info@fatwra.net\",\r\n    \"password\": \"xxxxxxxx\"\r\n}",
+  CURLOPT_HTTPHEADER => array(
+    "Content-Type: application/json"
+  ),
+));
+
+$response = curl_exec($curl);
+
+curl_close($curl);
+echo $response;</code></pre>
+                  </div>
+                  <div class="tab-pane" id="request-api-login-example-Python">
+                    <pre><code class="hljs Python">import requests
+              url = "{{BASE_URL}}/v1/api/Auth/Token"
+              payload = "{\r\n    \"username\": \"your-login-info@fatwra.net\",\r\n    \"password\": \"xxxxxxxx\"\r\n}"
+              headers = {
+                'Content-Type': 'application/json'
+              }
+              response = requests.request("POST", url, headers=headers, data = payload)
+              
+              print(response.text.encode('utf8'))</code></pre>
+                  </div>
+                  <div class="tab-pane" id="request-api-login-example-Ruby">
+                    <pre><code class="hljs Ruby">require "uri"
+              require "net/http"
+              
+              url = URI("{{BASE_URL}}/v1/api/Auth/Token")
+              
+              https = Net::HTTP.new(url.host, url.port);
+              https.use_ssl = true
+              
+              request = Net::HTTP::Post.new(url)
+              request["Content-Type"] = "application/json"
+              request.body = "{\r\n    \"username\": \"your-login-info@fatwra.net\",\r\n    \"password\": \"xxxxxxxx\"\r\n}"
+              
+              response = https.request(request)
+              puts response.read_body</code></pre>
+                  </div>
+                  <div class="tab-pane" id="request-api-login-example-Nodejs">
+                    <pre><code class="hljs Nodejs">var axios = require('axios');
+              var data = JSON.stringify({"username":"your-login-info@fatwra.net","password":"xxxxxxxx"});
+              var config = {
+                method: 'post',
+                url: '{{BASE_URL}}/v1/api/Auth/Token',
+                headers: { 
+                  'Content-Type': 'application/json'
+                },
+                data : data
+              };
+              axios(config).then(function (response) {
+                console.log(JSON.stringify(response.data));
+              }).catch(function (error) {
+                console.log(error);
+              });
+}</code></pre>
+                  </div>
+                  <div class="tab-pane" id="request-api-login-example-Java">
+                    <pre><code class="hljs Java">OkHttpClient client = new OkHttpClient().newBuilder()
+              .build();
+            MediaType mediaType = MediaType.parse("application/json");
+            RequestBody body = RequestBody.create(mediaType, "{\r\n    \"username\": \"your-login-info@fatwra.net\",\r\n    \"password\": \"xxxxxxxx\"\r\n}");
+            Request request = new Request.Builder()
+              .url("{{BASE_URL}}/v1/api/Auth/Token")
+              .method("POST", body)
+              .addHeader("Content-Type", "application/json")
+              .build();
+            Response response = client.newCall(request).execute();</code></pre>
+                  </div>
+                  <div class="tab-pane" id="request-api-login-example-C">
+                    <pre><code class="hljs C">var client = new RestClient("{{BASE_URL}}/v1/api/Auth/Token");
+              client.Timeout = -1;
+              var request = new RestRequest(Method.POST);
+              request.AddHeader("Content-Type", "application/json");
+              request.AddParameter("application/json", "{\r\n    \"username\": \"your-login-info@fatwra.net\",\r\n    \"password\": \"xxxxxxxx\"\r\n}",  ParameterType.RequestBody);
+              IRestResponse response = client.Execute(request);
+              Console.WriteLine(response.Content);</code></pre>
+                  </div>
+                  <div class="tab-pane"
+                    id="request-api-login-example-Javascript">
+                    <pre><code class="hljs Javascript">var myHeaders = new Headers();
+              myHeaders.append("Content-Type", "application/json");
+              
+              var raw = JSON.stringify({"username":"your-login-info@fatwra.net","password":"xxxxxxxx"});
+              
+              var requestOptions = {
+                method: 'POST',
+                headers: myHeaders,
+                body: raw,
+                redirect: 'follow'
+              };
+              
+              fetch("{{BASE_URL}}/v1/api/Auth/Token", requestOptions)
+                .then(response => response.text())
+                .then(result => console.log(result))
+                .catch(error => console.log('error', error));</code></pre>
+                  </div>
+
+                </div>
+                <h5>Error Response Body</h5>
+                <pre><code>{
+          "code": "400",
+         "message": "Bad request"
+     }
+     
+     {
+      "code": "401",
+     "message": " Error Unauthorized "
+ }
+              
+</code></pre>
+              </div>
+              <!-- END example requests -->
+
+              <!-- BEGIN example responses -->
+
+              <!-- END example responses -->
+            </div>
+          </div>
+          <br><br><br>
+          <div class="split">
+            <div class="left">
+              <div class="headling row">
+                <h4 id="request-api-addbill">
+                  Add Bill
+                  <a href="#request-api-addbill"><i class="glyphicon
+                      glyphicon-link"></i></a>
+                </h4>
+              </div>
+
+              <div class="description">
+                Use this API to create a bill on your customer, but first you
+                need ServiceId (GUID) to create bill on, you
+                can create service <a href="#request-api-addservice">here</a>,
+                or get your service <a
+                  href="#request-api-getservice">here</a>.
+              </div>
+            </div>
+
+            <div class="right empty"></div>
+          </div>
+
+          <div class="split">
+            <div class="left">
+              <div class="url row">
+                <h5>HTTP Request</h5>
+                <div class="col-xs-12">
+                  <code><span class="req-PUT text-lg">PUT</span>
+                    {{BASE_URL}}/v1/api/Provider/AddBill</code>
+                </div>
+              </div>
+
+              <div class="headers row">
+                <h5>Headers</h5>
+
+                <div class="col-xs-12">
+                  <code><span class="req-POST text-lg">Content-Type:
+                      application/json</code><br />
+                    <code><span class="req-POST text-lg">Authorization: Bearer
+                        {{YOUR_TOKEN}}</code>
+                    </div>
+
+                  </div>
+
+                  <div class="payload row">
+                    <h5>PayLoad</h5>
+                    <div class="col-xs-12">
+
+
+                      <pre><code>{
+  "payId": "",
+  "customerName": "Customer Name",
+  "dueDate": "2021-12-20",
+  "phoneNumber": "07xxxxxxxxx",
+  "serviceId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+  "amount": "1500",
+  "note": "custome-field, you can but here anything"
+}
+</code></pre>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="right clearfix">
+                  <!-- BEGIN example requests -->
+                  <div class="request">
+                    <h5>Example request</h5>
+                    <ul class="nav nav-pills" role="tablist">
+                      <li role="presentation" class="active"><a
+                          href="#request-api-addbill-example-curl"
+                          data-toggle="tab">Curl</a></li>
+                      <li role="presentation"><a
+                          href="#request-api-addbill-example-PHP"
+                          data-toggle="tab">PHP</a></li>
+                      <li role="presentation"><a
+                          href="#request-api-addbill-example-Python"
+                          data-toggle="tab">Python</a></li>
+                      <li role="presentation"><a
+                          href="#request-api-addbill-example-Ruby"
+                          data-toggle="tab">Ruby</a></li>
+                      <li role="presentation"><a
+                          href="#request-api-addbill-example-Nodejs"
+                          data-toggle="tab">Nodejs</a></li>
+                      <li role="presentation"><a
+                          href="#request-api-addbill-example-Java"
+                          data-toggle="tab">Java</a></li>
+                      <li role="presentation"><a
+                          href="#request-api-addbill-example-C"
+                          data-toggle="tab">C#</a></li>
+                      <li role="presentation"><a
+                          href="#request-api-addbill-example-Javascript"
+                          data-toggle="tab">Javascript</a>
+                      </li>
+                    </ul>
+                    <div class="tab-content">
+                      <div class="tab-content">
+                        <div class="tab-pane active"
+                          id="request-api-addbill-example-curl">
+                          <pre><code class="hljs curl">curl --location --request PUT '{{BASE_URL}}/v1/api/Provider/AddBill' \
+                --header 'Authorization: Bearer  {{YOUR_TOKEN}}' \
+                --header 'Content-Type: application/json' \
+                --data-raw '{
+                  "payId": "",
+				  "customerName": "Customer Name",
+				  "dueDate": "2021-12-20",
+				  "phoneNumber": "07xxxxxxxxx",
+				  "serviceId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+				  "amount": "1500",
+				  "note": "custome-field, you can but here anything"
+                }
+                '</code></pre>
+                        </div>
+                        <div class="tab-pane"
+                          id="request-api-addbill-example-PHP">
+                          <pre><code class="hljs PHP">
+                $curl = curl_init();
+                curl_setopt_array($curl, array(
+                  CURLOPT_URL => "{{BASE_URL}}/v1/api/Provider/AddBill",
+                  CURLOPT_RETURNTRANSFER => true,
+                  CURLOPT_ENCODING => "",
+                  CURLOPT_MAXREDIRS => 10,
+                  CURLOPT_TIMEOUT => 0,
+                  CURLOPT_FOLLOWLOCATION => true,
+                  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                  CURLOPT_CUSTOMREQUEST => "PUT",
+                  CURLOPT_POSTFIELDS =>"{\r\n  \"payId\": \"\",\r\n  \"customerName\": \"Customer Name\",\r\n  \"dueDate\": \"2021-12-20\",\r\n  \"payDate\": \"\",\r\n  \"status\": 2,\r\n  \"clientId\": 150,\r\n  \"phoneNumber\": \"07711111111\",\r\n  \"serviceId\": \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\r\n  \"amount\": \"1500\",\r\n  \"note\": \"\"\r\n}\r\n",
+                  CURLOPT_HTTPHEADER => array(
+                    "Authorization: Bearer  {{YOUR_TOKEN}}",
+                    "Content-Type: application/json"
+                  ),
+                ));
+                
+                $response = curl_exec($curl);
+                
+                curl_close($curl);
+                echo $response;</code></pre>
+                        </div>
+                        <div class="tab-pane"
+                          id="request-api-addbill-example-Python">
+                          <pre><code class="hljs Python">import requests
+                url = "{{BASE_URL}}/v1/api/Provider/AddBill"
+                payload = "{\r\n  \"payId\": \"\",\r\n  \"customerName\": \"Customer Name\",\r\n  \"dueDate\": \"2021-12-20\",\r\n  \"payDate\": \"\",\r\n  \"status\": 2,\r\n  \"clientId\": 150,\r\n  \"phoneNumber\": \"07711111111\",\r\n  \"serviceId\": \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\r\n  \"amount\": \"1500\",\r\n  \"note\": \"\"\r\n}\r\n"
+                headers = {
+                  'Authorization': 'Bearer  {{YOUR_TOKEN}}',
+                  'Content-Type': 'application/json'
+                }
+                
+                response = requests.request("PUT", url, headers=headers, data = payload)
+                print(response.text.encode('utf8'))</code></pre>
+                        </div>
+                        <div class="tab-pane"
+                          id="request-api-addbill-example-Ruby">
+                          <pre><code class="hljs Ruby">require "uri"
+                require "net/http"
+                
+                url = URI("{{BASE_URL}}/v1/api/Provider/AddBill")
+                
+                https = Net::HTTP.new(url.host, url.port);
+                https.use_ssl = true
+                request = Net::HTTP::Put.new(url)
+                request["Authorization"] = "Bearer  {{YOUR_TOKEN}}"
+                request["Content-Type"] = "application/json"
+                request.body = "{\r\n  \"payId\": \"\",\r\n  \"customerName\": \"Customer Name\",\r\n  \"dueDate\": \"2021-12-20\",\r\n  \"payDate\": \"\",\r\n  \"status\": 2,\r\n  \"clientId\": 150,\r\n  \"phoneNumber\": \"07711111111\",\r\n  \"serviceId\": \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\r\n  \"amount\": \"1500\",\r\n  \"note\": \"\"\r\n}\r\n"
+                
+                response = https.request(request)
+                puts response.read_body</code></pre>
+                        </div>
+                        <div class="tab-pane"
+                          id="request-api-addbill-example-Nodejs">
+                          <pre><code class="hljs Nodejs">var axios = require('axios');
+                var data = JSON.stringify({"payId":"","customerName":"Customer Name","dueDate":"2021-12-20","payDate":"","status":2,"clientId":150,"phoneNumber":"07711111111","serviceId":"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx","amount":"1500","note":""});
+                
+                var config = {
+                  method: 'put',
+                  url: '{{BASE_URL}}/v1/api/Provider/AddBill',
+                  headers: { 
+                    'Authorization': 'Bearer  {{YOUR_TOKEN}}', 
+                    'Content-Type': 'application/json'
+                  },
+                  data : data
+                };
+                axios(config).then(function (response) {
+                  console.log(JSON.stringify(response.data));
+                }).catch(function (error) {
+                  console.log(error);
+                });
+                </code></pre>
+                        </div>
+                        <div class="tab-pane"
+                          id="request-api-addbill-example-Java">
+                          <pre><code class="hljs Java">OkHttpClient client = new OkHttpClient().newBuilder()
+                .build();
+              MediaType mediaType = MediaType.parse("application/json");
+              RequestBody body = RequestBody.create(mediaType, "{\r\n  \"payId\": \"\",\r\n  \"customerName\": \"Customer Name\",\r\n  \"dueDate\": \"2021-12-20\",\r\n  \"payDate\": \"\",\r\n  \"status\": 2,\r\n  \"clientId\": 150,\r\n  \"phoneNumber\": \"07711111111\",\r\n  \"serviceId\": \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\r\n  \"amount\": \"1500\",\r\n  \"note\": \"\"\r\n}\r\n");
+              Request request = new Request.Builder()
+                .url("{{BASE_URL}}/v1/api/Provider/AddBill")
+                .method("PUT", body)
+                .addHeader("Authorization", "Bearer  {{YOUR_TOKEN}}")
+                .addHeader("Content-Type", "application/json")
+                .build();
+              Response response = client.newCall(request).execute();</code></pre>
+                        </div>
+                        <div class="tab-pane"
+                          id="request-api-addbill-example-C">
+                          <pre><code class="hljs C">var client = new RestClient("{{BASE_URL}}/v1/api/Provider/AddBill");
+                client.Timeout = -1;
+                var request = new RestRequest(Method.PUT);
+                request.AddHeader("Authorization", "Bearer  {{YOUR_TOKEN}}");
+                request.AddHeader("Content-Type", "application/json");
+                request.AddParameter("application/json", "{\r\n  \"payId\": \"\",\r\n  \"customerName\": \"Customer Name\",\r\n  \"dueDate\": \"2021-12-20\",\r\n  \"payDate\": \"\",\r\n  \"status\": 2,\r\n  \"clientId\": 150,\r\n  \"phoneNumber\": \"07711111111\",\r\n  \"serviceId\": \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\r\n  \"amount\": \"1500\",\r\n  \"note\": \"\"\r\n}\r\n",  ParameterType.RequestBody);
+                IRestResponse response = client.Execute(request);
+                Console.WriteLine(response.Content);</code></pre>
+                        </div>
+                        <div class="tab-pane"
+                          id="request-api-addbill-example-Javascript">
+                          <pre><code class="hljs Javascript">var myHeaders = new Headers();
+                myHeaders.append("Authorization", "Bearer  {{YOUR_TOKEN}}");
+                myHeaders.append("Content-Type", "application/json");
+                var raw = JSON.stringify({"payId":"","customerName":"Customer Name","dueDate":"2021-12-20","payDate":"","status":2,"clientId":150,"phoneNumber":"07711111111","serviceId":"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx","amount":"1500","note":""});
+                
+                var requestOptions = {
+                  method: 'PUT',
+                  headers: myHeaders,
+                  body: raw,
+                  redirect: 'follow'
+                };
+                
+                fetch("{{BASE_URL}}/v1/api/Provider/AddBill", requestOptions)
+                  .then(response => response.text())
+                  .then(result => console.log(result))
+                  .catch(error => console.log('error', error));</code></pre>
+                        </div>
+
+                      </div>
+                    </div>
+
+                    <h5>Error Response Body</h5>
+                    <pre><code>{
+                      "code": "400",
+                      "message": "Bad request"
+                      }
+                      OR
+                      {
+                      "code": "401",
+                      "message": "Error Unauthorized."
+                      }
+                      
+                          
+            </code></pre>
+                  </div>
+                  <!-- END example requests -->
+
+                  <!-- BEGIN example responses -->
+
+                  <!-- END example responses -->
+                </div>
+              </div>
+              <div class="split">
+                <div class="left">
+                  <div class="headling row">
+                    <h4 id="request-api-addservice">
+                      Add Service
+                      <a href="#request-api-addservice"><i class="glyphicon
+                          glyphicon-link"></i></a>
+                    </h4>
+                  </div>
+
+                  <div class="description">
+                    <p>Create a new service to add your bills on.</p>
+
+                    <table>
+                      <thead>
+                        <tr>
+                          <th align="left">Parameters</th>
+                          <th align="left">Description</th>
+                          <th align="center">Status</th>
+                          <th align="center">Type</th>
+                        </tr>
+                      </thead>
+
+                      <tbody>
+                        <tr>
+                          <td align="left">providerId</td>
+                          <td align="left">Guid</td>
+                          <td align="center">Required</td>
+                          <td align="center">String</td>
+                        </tr>
+
+                        <tr>
+                          <td align="left">name</td>
+                          <td align="left">Plane Text</td>
+                          <td align="center">Required</td>
+                          <td align="center">String</td>
+                        </tr>
+                        <tr>
+                          <td align="left">note</td>
+                          <td align="left">Plane Text</td>
+                          <td align="center">optional</td>
+                          <td align="center">String</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+
+                <div class="right empty"></div>
+              </div>
+
+              <div class="split">
+                <div class="left">
+                  <div class="url row">
+                    <h5>HTTP Request</h5>
+                    <div class="col-xs-12">
+                      <code><span class="req-PUT text-lg">PUT</span>
+                        {{BASE_URL}}/v1/api/Provider/AddService</code>
+                    </div>
+                  </div>
+
+                  <div class="headers row">
+                    <h5>Headers</h5>
+
+                    <div class="col-xs-12">
+                      <code><span class="req-POST text-lg">Content-Type:
+                          application/json</code><br />
+                        <code><span class="req-POST text-lg">Authorization:
+                            Bearer {{YOUR_TOKEN}}</code>
+                        </div>
+
+                      </div>
+
+                      <div class="payload row">
+                        <h5>PayLoad</h5>
+                        <div class="col-xs-12">
+
+                          <pre><code>{
+    "providerId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+    "name": "New Service",
+    "note": "Description of Service"
+}</code></pre>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="right clearfix">
+                      <!-- BEGIN example requests -->
+                      <div class="request">
+                        <h5>Example request</h5>
+
+                        <ul class="nav nav-pills" role="tablist">
+                          <li role="presentation" class="active"><a
+                              href="#request-api-addservice-example-curl"
+                              data-toggle="tab">Curl</a></li>
+                          <li role="presentation"><a
+                              href="#request-api-addservice-example-PHP"
+                              data-toggle="tab">PHP</a></li>
+                          <li role="presentation"><a
+                              href="#request-api-addservice-example-Python"
+                              data-toggle="tab">Python</a></li>
+                          <li role="presentation"><a
+                              href="#request-api-addservice-example-Ruby"
+                              data-toggle="tab">Ruby</a></li>
+                          <li role="presentation"><a
+                              href="#request-api-addservice-example-Nodejs"
+                              data-toggle="tab">Nodejs</a></li>
+                          <li role="presentation"><a
+                              href="#request-api-addservice-example-Java"
+                              data-toggle="tab">Java</a></li>
+                          <li role="presentation"><a
+                              href="#request-api-addservice-example-C"
+                              data-toggle="tab">C#</a></li>
+                          <li role="presentation"><a
+                              href="#request-api-addservice-example-Javascript"
+                              data-toggle="tab">Javascript</a></li>
+                        </ul>
+                        <div class="tab-content">
+                          <div class="tab-pane active"
+                            id="request-api-addservice-example-curl">
+                            <pre><code class="hljs curl">curl --location --request PUT '{{BASE_URL}}/v1/api/Provider/AddService' \
+                --header 'Authorization: Bearer  {{YOUR_TOKEN}}' \
+                --header 'Content-Type: application/json' \
+                --data-raw '{
+                "providerId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+                "name": "New Service",
+                "note": "Description for service"</code></pre>
+                          </div>
+                          <div class="tab-pane"
+                            id="request-api-addservice-example-PHP">
+                            <pre><code class="hljs PHP">
+                $curl = curl_init();
+                curl_setopt_array($curl, array(
+                  CURLOPT_URL => "{{BASE_URL}}/v1/api/Provider/AddService",
+                  CURLOPT_RETURNTRANSFER => true,
+                  CURLOPT_ENCODING => "",
+                  CURLOPT_MAXREDIRS => 10,
+                  CURLOPT_TIMEOUT => 0,
+                  CURLOPT_FOLLOWLOCATION => true,
+                  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                  CURLOPT_CUSTOMREQUEST => "PUT",
+                  CURLOPT_POSTFIELDS =>"{\r\n\"providerId\": \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\r\n\"name\": \"New Service\",\r\n\"note\": \"Description for service\"\r\n}\r\n",
+                  CURLOPT_HTTPHEADER => array(
+                    "Authorization: Bearer  {{YOUR_TOKEN}}",
+                    "Content-Type: application/json"
+                  ),
+                ));
+                $response = curl_exec($curl);
+                curl_close($curl);
+                echo $response;</code></pre>
+                          </div>
+                          <div class="tab-pane"
+                            id="request-api-addservice-example-Python">
+                            <pre><code class="hljs Python">import requests
+
+                url = "{{BASE_URL}}/v1/api/Provider/AddService"
+                payload = "{\r\n\"providerId\": \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\r\n\"name\": \"New Service\",\r\n\"note\": \"Description for service\"\r\n}\r\n"
+                headers = {
+                  'Authorization': 'Bearer  {{YOUR_TOKEN}}',
+                  'Content-Type': 'application/json'
+                }
+                response = requests.request("PUT", url, headers=headers, data = payload)
+                print(response.text.encode('utf8'))</code></pre>
+                          </div>
+                          <div class="tab-pane"
+                            id="request-api-addservice-example-Ruby">
+                            <pre><code class="hljs Ruby">require "uri"
+                require "net/http"
+                
+                url = URI("{{BASE_URL}}/v1/api/Provider/AddService")
+                
+                https = Net::HTTP.new(url.host, url.port);
+                https.use_ssl = true
+                
+                request = Net::HTTP::Put.new(url)
+                request["Authorization"] = "Bearer  {{YOUR_TOKEN}}"
+                request["Content-Type"] = "application/json"
+                request.body = "{\r\n\"providerId\": \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\r\n\"name\": \"New Service\",\r\n\"note\": \"Description for service\"\r\n}\r\n"
+                
+                response = https.request(request)
+                puts response.read_body</code></pre>
+                          </div>
+                          <div class="tab-pane"
+                            id="request-api-addservice-example-Nodejs">
+                            <pre><code class="hljs Nodejs">var axios = require('axios');
+                var data = JSON.stringify({"providerId":"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx","name":"New Service","note":"Description for service"});
+                
+                var config = {
+                  method: 'put',
+                  url: '{{BASE_URL}}/v1/api/Provider/AddService',
+                  headers: { 
+                    'Authorization': 'Bearer  {{YOUR_TOKEN}}', 
+                    'Content-Type': 'application/json'
+                  },
+                  data : data
+                };
+                
+                axios(config)
+                .then(function (response) {
+                  console.log(JSON.stringify(response.data));
+                })
+                .catch(function (error) {
+                  console.log(error);
+                });
+}</code></pre>
+                          </div>
+                          <div class="tab-pane"
+                            id="request-api-addservice-example-Java">
+                            <pre><code class="hljs Java">OkHttpClient client = new OkHttpClient().newBuilder().build();
+              MediaType mediaType = MediaType.parse("application/json");
+              RequestBody body = RequestBody.create(mediaType, "{\r\n\"providerId\": \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\r\n\"name\": \"New Service\",\r\n\"note\": \"Description for service\"\r\n}\r\n");
+              Request request = new Request.Builder()
+                .url("{{BASE_URL}}/v1/api/Provider/AddService")
+                .method("PUT", body)
+                .addHeader("Authorization", "Bearer  {{YOUR_TOKEN}}")
+                .addHeader("Content-Type", "application/json")
+                .build();
+              Response response = client.newCall(request).execute();</code></pre>
+                          </div>
+                          <div class="tab-pane"
+                            id="request-api-addservice-example-C">
+                            <pre><code class="hljs C">var client = new RestClient("{{BASE_URL}}/v1/api/Provider/AddService");
+                client.Timeout = -1;
+                var request = new RestRequest(Method.PUT);
+                request.AddHeader("Authorization", "Bearer  {{YOUR_TOKEN}}");
+                request.AddHeader("Content-Type", "application/json");
+                request.AddParameter("application/json", "{\r\n\"providerId\": \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\r\n\"name\": \"New Service\",\r\n\"note\": \"Description for service\"\r\n}\r\n",  ParameterType.RequestBody);
+                IRestResponse response = client.Execute(request);
+                Console.WriteLine(response.Content);</code></pre>
+                          </div>
+                          <div class="tab-pane"
+                            id="request-api-addservice-example-Javascript">
+                            <pre><code class="hljs Javascript">var myHeaders = new Headers();
+                myHeaders.append("Authorization", "Bearer  {{YOUR_TOKEN}}");
+                myHeaders.append("Content-Type", "application/json");
+                
+                var raw = JSON.stringify({"providerId":"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx","name":"New Service","note":"Description for service"});
+                
+                var requestOptions = {
+                  method: 'PUT',
+                  headers: myHeaders,
+                  body: raw,
+                  redirect: 'follow'
+                };
+                
+                fetch("{{BASE_URL}}/v1/api/Provider/AddService", requestOptions)
+                  .then(response => response.text())
+                  .then(result => console.log(result))
+                  .catch(error => console.log('error', error));</code></pre>
+                          </div>
+
+                        </div>
+
+                        <h5>Error Response Body</h5>
+        <pre><code>{
+          "code": "400",
+          "message": "Bad request"
+          }
+          OR
+          
+          {
+          "code": "401",
+          "message": "Error Unauthorized."
+          }
+              
+</code></pre>
+
+                      </div>
+                      <!-- END example requests -->
+
+                      <!-- BEGIN example responses -->
+
+                      <!-- END example responses -->
+                    </div>
+                  </div>
+                  <br><br><br>
+                  <div class="split">
+                    <div class="left">
+                      <div class="headling row">
+                        <h4 id="request-api-getservice">
+                          Get Service
+                          <a href="#request-api-getservice"><i class="glyphicon
+                              glyphicon-link"></i></a>
+                        </h4>
+                      </div>
+
+                      <div class="description">Get your service information by
+                        it's own GUID.
+                        <table>
+                          <thead>
+                            <tr>
+                              <th align="left">Parameters</th>
+                              <th align="left">Description</th>
+                              <th align="center">Status</th>
+                              <th align="center">Type</th>
+                            </tr>
+                          </thead>
+
+                          <tbody>
+                            <tr>
+                              <td align="left">serviceId</td>
+                              <td align="left">Service GUID</td>
+                              <td align="center">Required</td>
+                              <td align="center">Querey Parameter</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+
+                    <div class="right empty"></div>
+                  </div>
+
+                  <div class="split">
+                    <div class="left">
+                      <div class="url row">
+                        <h5>HTTP Request</h5>
+                        <div class="col-xs-12">
+                          <code><span class="req-GET text-lg">GET</span>
+                            {{BASE_URL}}/v1/api/Provider/GetService?serviceId=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx</code>
+                        </div>
+                      </div>
+
+                      <div class="headers row">
+                        <h5>Headers</h5>
+
+                        <div class="col-xs-12">
+                          <code><span class="req-POST text-lg">Content-Type:
+                              application/json</code><br />
+                            <code><span class="req-POST text-lg">Authorization:
+                                Bearer {{YOUR_TOKEN}}</code>
+                            </div>
+
+                          </div>
+
+                          <div class="payload row">
+                            <h5>PayLoad</h5>
+                            <div class="col-xs-12">
+                              None.
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="right clearfix">
+                          <!-- BEGIN example requests -->
+                          <div class="request">
+                            <h5>Example request</h5>
+                            <ul class="nav nav-pills" role="tablist">
+                              <li role="presentation" class="active"><a
+                                  href="#request-api-getservice-example-curl"
+                                  data-toggle="tab">Curl</a></li>
+                              <li role="presentation"><a
+                                  href="#request-api-getservice-example-PHP"
+                                  data-toggle="tab">PHP</a></li>
+                              <li role="presentation"><a
+                                  href="#request-api-getservice-example-Python"
+                                  data-toggle="tab">Python</a></li>
+                              <li role="presentation"><a
+                                  href="#request-api-getservice-example-Ruby"
+                                  data-toggle="tab">Ruby</a></li>
+                              <li role="presentation"><a
+                                  href="#request-api-getservice-example-Nodejs"
+                                  data-toggle="tab">Nodejs</a></li>
+                              <li role="presentation"><a
+                                  href="#request-api-getservice-example-Java"
+                                  data-toggle="tab">Java</a></li>
+                              <li role="presentation"><a
+                                  href="#request-api-getservice-example-C"
+                                  data-toggle="tab">C#</a></li>
+                              <li role="presentation"><a
+                                  href="#request-api-getservice-example-Javascript"
+                                  data-toggle="tab">Javascript</a></li>
+                            </ul>
+                            <div class="tab-content">
+                              <div class="tab-pane active"
+                                id="request-api-getservice-example-curl">
+                                <pre><code class="hljs curl">curl --location --request GET '{{BASE_URL}}/v1/api/Provider/GetService?serviceId=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx' \
+                --header 'Authorization: Bearer  {{YOUR_TOKEN}}' \
+                --header 'Content-Type: application/json' \
+                --data-raw '
+                '</code></pre>
+                              </div>
+                              <div class="tab-pane"
+                                id="request-api-getservice-example-PHP">
+                                <pre><code class="hljs PHP">
+                $curl = curl_init();
+                curl_setopt_array($curl, array(
+                  CURLOPT_URL => "{{BASE_URL}}/v1/api/Provider/GetService?serviceId=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+                  CURLOPT_RETURNTRANSFER => true,
+                  CURLOPT_ENCODING => "",
+                  CURLOPT_MAXREDIRS => 10,
+                  CURLOPT_TIMEOUT => 0,
+                  CURLOPT_FOLLOWLOCATION => true,
+                  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                  CURLOPT_CUSTOMREQUEST => "GET",
+                  CURLOPT_POSTFIELDS =>"\r\n",
+                  CURLOPT_HTTPHEADER => array(
+                    "Authorization: Bearer  {{YOUR_TOKEN}}",
+                    "Content-Type: application/json"
+                  ),
+                ));
+                
+                $response = curl_exec($curl);
+                
+                curl_close($curl);
+                echo $response;</code></pre>
+                              </div>
+                              <div class="tab-pane"
+                                id="request-api-getservice-example-Python">
+                                <pre><code class="hljs Python">import requests
+                url = "{{BASE_URL}}/v1/api/Provider/GetService?serviceId=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+                
+                payload = "\r\n"
+                headers = {
+                  'Authorization': 'Bearer  {{YOUR_TOKEN}}',
+                  'Content-Type': 'application/json'
+                }
+                response = requests.request("GET", url, headers=headers, data = payload)
+                print(response.text.encode('utf8'))</code></pre>
+                              </div>
+                              <div class="tab-pane"
+                                id="request-api-getservice-example-Ruby">
+                                <pre><code class="hljs Ruby">require "uri"
+                require "net/http"
+                url = URI("{{BASE_URL}}/v1/api/Provider/GetService?serviceId=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")
+                https = Net::HTTP.new(url.host, url.port);
+                https.use_ssl = true
+                request = Net::HTTP::Get.new(url)
+                request["Authorization"] = "Bearer  {{YOUR_TOKEN}}"
+                request["Content-Type"] = "application/json"
+                request.body = "\r\n"
+                response = https.request(request)
+                puts response.read_body</code></pre>
+                              </div>
+                              <div class="tab-pane"
+                                id="request-api-getservice-example-Nodejs">
+                                <pre><code class="hljs Nodejs">var axios = require('axios');
+                var data = '\n';
+                var config = {
+                  method: 'get',
+                  url: '{{BASE_URL}}/v1/api/Provider/GetService?serviceId=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx',
+                  headers: { 
+                    'Authorization': 'Bearer  {{YOUR_TOKEN}}', 
+                    'Content-Type': 'application/json'
+                  },
+                  data : data
+                };
+                axios(config).then(function (response) {
+                  console.log(JSON.stringify(response.data));
+                }).catch(function (error) {
+                  console.log(error);
+                });</code></pre>
+                              </div>
+                              <div class="tab-pane"
+                                id="request-api-getservice-example-Java">
+                                <pre><code class="hljs Java">OkHttpClient client = new OkHttpClient().newBuilder().build();
+              Request request = new Request.Builder()
+                .url("{{BASE_URL}}/v1/api/Provider/GetService?serviceId=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")
+                .method("GET", null)
+                .addHeader("Authorization", "Bearer  {{YOUR_TOKEN}}")
+                .addHeader("Content-Type", "application/json").build();
+              Response response = client.newCall(request).execute();</code></pre>
+                              </div>
+                              <div class="tab-pane"
+                                id="request-api-getservice-example-C">
+                                <pre><code class="hljs C">var client = new RestClient("{{BASE_URL}}/v1/api/Provider/GetService?serviceId=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx");
+                client.Timeout = -1;
+                var request = new RestRequest(Method.GET);
+                request.AddHeader("Authorization", "Bearer  {{YOUR_TOKEN}}");
+                request.AddHeader("Content-Type", "application/json");
+                request.AddParameter("application/json", "\r\n",  ParameterType.RequestBody);
+                IRestResponse response = client.Execute(request);
+                Console.WriteLine(response.Content);</code></pre>
+                              </div>
+                              <div class="tab-pane"
+                                id="request-api-getservice-example-Javascript">
+                                <pre><code class="hljs Javascript">var myHeaders = new Headers();
+                myHeaders.append("Authorization", "Bearer  {{YOUR_TOKEN}}");
+                myHeaders.append("Content-Type", "application/json");
+                var raw = "\n";
+                var requestOptions = {
+                  method: 'GET',
+                  headers: myHeaders,
+                  body: raw,
+                  redirect: 'follow'
+                };
+                fetch("{{BASE_URL}}/v1/api/Provider/GetService?serviceId=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", requestOptions)
+                  .then(response => response.text())
+                  .then(result => console.log(result))
+                  .catch(error => console.log('error', error));</code></pre>
+                              </div>
+
+                            </div>
+
+
+                            <h5>Error Response Body</h5>
+        <pre><code>{
+          "code": "400",
+          "message": "Bad request"
+          }
+          OR
+          
+          {
+          "code": "401",
+          "message": "Error Unauthorized."
+          }
+          
+              
+</code></pre>
+                          </div>
+                          <!-- END example requests -->
+
+                          <!-- BEGIN example responses -->
+
+                          <!-- END example responses -->
+                        </div>
+                      </div>
+                      <br><br><br>
+
+                      <div class="split">
+                        <div class="left">
+                          <div class="headling row">
+                            <h4 id="request-api-searchbill">
+                              Search Bill
+                              <a href="#request-api-searchbill"><i
+                                  class="glyphicon glyphicon-link"></i></a>
+                            </h4>
+                          </div>
+
+                          <div class="description">
+                            This API for getting bills where matching one of the
+                            following: <br />PayId, Customer Phone Number or the
+                            Note Custome Field.
+                            <table>
+                              <thead>
+                                <tr>
+                                  <th align="left">Parameters</th>
+                                  <th align="left">Description</th>
+                                  <th align="center">Status</th>
+                                  <th align="center">Type</th>
+                                </tr>
+                              </thead>
+
+                              <tbody>
+                                <tr>
+                                  <td align="left">searchTerm</td>
+                                  <td align="left">Bill PayId, Customer
+                                    PhoneNumber, Note</td>
+                                  <td align="center">Required</td>
+                                  <td align="center">Querey Parameter</td>
+                                </tr>
+                                <tr>
+                                  <td align="left">start</td>
+                                  <td align="left">Pagination (Get bills from
+                                    index)</td>
+                                  <td align="center">Required</td>
+                                  <td align="center">Querey Parameter</td>
+                                </tr>
+                                <tr>
+                                  <td align="left">start</td>
+                                  <td align="left">Pagination (Take bills count)</td>
+                                  <td align="center">Required</td>
+                                  <td align="center">Querey Parameter</td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
+
+                        <div class="right empty"></div>
+                      </div>
+
+                      <div class="split">
+                        <div class="left">
+                          <div class="url row">
+                            <h5>HTTP Request</h5>
+                            <div class="col-xs-12">
+                              <code><span class="req-GET text-lg">GET</span>
+                                {{BASE_URL}}/v1/api/Provider/SearchBill?searchTerm=xxxxxxxxxxxxxxxx&start=0&end=10</code>
+                            </div>
+                          </div>
+
+                          <div class="headers row">
+                            <h5>Headers</h5>
+
+                            <div class="col-xs-12">
+                              <code><span class="req-POST text-lg">Content-Type:
+                                  application/json</code><br />
+                                <code><span class="req-POST text-lg">Authorization:
+                                    Bearer {{YOUR_TOKEN}}</code>
+                                </div>
+
+                              </div>
+
+                              <div class="payload row">
+                                <h5>PayLoad</h5>
+                                <div class="col-xs-12">
+                                  None.
+
+                                </div>
+
+                              </div>
+                            </div>
+
+                            <div class="right clearfix">
+                              <!-- BEGIN example requests -->
+                              <div class="request">
+                                <h5>Example request</h5>
+
+                                <ul class="nav nav-pills" role="tablist">
+                                  <li role="presentation" class="active"><a
+                                      href="#request-api-searchbill-example-curl"
+                                      data-toggle="tab">Curl</a></li>
+                                  <li role="presentation"><a
+                                      href="#request-api-searchbill-example-PHP"
+                                      data-toggle="tab">PHP</a></li>
+                                  <li role="presentation"><a
+                                      href="#request-api-searchbill-example-Python"
+                                      data-toggle="tab">Python</a></li>
+                                  <li role="presentation"><a
+                                      href="#request-api-searchbill-example-Ruby"
+                                      data-toggle="tab">Ruby</a></li>
+                                  <li role="presentation"><a
+                                      href="#request-api-searchbill-example-Nodejs"
+                                      data-toggle="tab">Nodejs</a></li>
+                                  <li role="presentation"><a
+                                      href="#request-api-searchbill-example-Java"
+                                      data-toggle="tab">Java</a></li>
+                                  <li role="presentation"><a
+                                      href="#request-api-searchbill-example-C"
+                                      data-toggle="tab">C#</a></li>
+                                  <li role="presentation"><a
+                                      href="#request-api-searchbill-example-Javascript"
+                                      data-toggle="tab">Javascript</a></li>
+                                </ul>
+                                <div class="tab-content">
+                                  <div class="tab-content">
+                                    <div class="tab-pane active"
+                                      id="request-api-searchbill-example-curl">
+                                      <pre><code class="hljs curl">curl --location --request GET '{{BASE_URL}}/v1/api/Provider/SearchBill?searchTerm=xxxxxxxxxxxxxxxx&start=0&end=10' \
+                  --header 'Authorization: Bearer  {{YOUR_TOKEN}}' \
+                  --header 'Content-Type: application/json' \
+                  --data-raw '
+                  '</code></pre>
+                                    </div>
+                                    <div class="tab-pane"
+                                      id="request-api-searchbill-example-PHP">
+                                      <pre><code class="hljs PHP">
+
+                  $curl = curl_init();
+                  
+                  curl_setopt_array($curl, array(
+                    CURLOPT_URL => "{{BASE_URL}}t/v1/api/Provider/SearchBill?searchTerm=xxxxxxxxxxxxxxxx&start=0&end=10",
+                    CURLOPT_RETURNTRANSFER => true,
+                    CURLOPT_ENCODING => "",
+                    CURLOPT_MAXREDIRS => 10,
+                    CURLOPT_TIMEOUT => 0,
+                    CURLOPT_FOLLOWLOCATION => true,
+                    CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                    CURLOPT_CUSTOMREQUEST => "GET",
+                    CURLOPT_POSTFIELDS =>"\r\n",
+                    CURLOPT_HTTPHEADER => array(
+                      "Authorization: Bearer  {{YOUR_TOKEN}}",
+                      "Content-Type: application/json"
+                    ),
+                  ));
+                  
+                  $response = curl_exec($curl);
+                  
+                  curl_close($curl);
+                  echo $response;
+                  </code></pre>
+                                    </div>
+                                    <div class="tab-pane"
+                                      id="request-api-searchbill-example-Python">
+                                      <pre><code class="hljs Python">import http.client
+                  import mimetypes
+                  conn = http.client.HTTPSConnection("api-uat.fatwra.net")
+                  payload = "\r\n"
+                  headers = {
+                    'Authorization': 'Bearer  {{YOUR_TOKEN}}',
+                    'Content-Type': 'application/json'
+                  }
+                  conn.request("GET", "{{BASE_URL}}/v1/api/Provider/SearchBill?searchTerm=xxxxxxxxxxxxxxxx&start=0&end=10", payload, headers)
+                  res = conn.getresponse()
+                  data = res.read()
+                  print(data.decode("utf-8"))</code></pre>
+                                    </div>
+                                    <div class="tab-pane"
+                                      id="request-api-searchbill-example-Ruby">
+                                      <pre><code class="hljs Ruby">require "uri"
+                  require "net/http"
+                  url = URI("{{BASE_URL}}/v1/api/Provider/SearchBill?searchTerm=xxxxxxxxxxxxxxxx&start=0&end=10")
+                  
+                  https = Net::HTTP.new(url.host, url.port);
+                  https.use_ssl = true
+                  
+                  request = Net::HTTP::Get.new(url)
+                  request["Authorization"] = "Bearer  {{YOUR_TOKEN}}"
+                  request["Content-Type"] = "application/json"
+                  request.body = "\r\n"
+                  
+                  response = https.request(request)
+                  puts response.read_body</code></pre>
+                                    </div>
+                                    <div class="tab-pane"
+                                      id="request-api-searchbill-example-Nodejs">
+                                      <pre><code class="hljs Nodejs">var axios = require('axios');
+                  var data = '\n';
+                  var config = {
+                    method: 'get',
+                    url: '{{BASE_URL}}/v1/api/Provider/SearchBill?searchTerm=xxxxxxxxxxxxxxxx&start=0&end=10',
+                    headers: { 
+                      'Authorization': 'Bearer  {{YOUR_TOKEN}}', 
+                      'Content-Type': 'application/json'
+                    },
+                    data : data
+                  };
+                  axios(config).then(function (response) {
+                    console.log(JSON.stringify(response.data));
+                  }).catch(function (error) {
+                    console.log(error);
+                  });
+                  </code></pre>
+                                    </div>
+                                    <div class="tab-pane"
+                                      id="request-api-searchbill-example-Java">
+                                      <pre><code class="hljs Java">OkHttpClient client = new OkHttpClient().newBuilder().build();
+                Request request = new Request.Builder()
+                  .url("{{BASE_URL}}/v1/api/Provider/SearchBill?searchTerm=xxxxxxxxxxxxxxxx&start=0&end=10")
+                  .method("GET", null)
+                  .addHeader("Authorization", "Bearer  {{YOUR_TOKEN}}")
+                  .addHeader("Content-Type", "application/json")
+                  .build();
+                Response response = client.newCall(request).execute();</code></pre>
+                                    </div>
+                                    <div class="tab-pane"
+                                      id="request-api-searchbill-example-C">
+                                      <pre><code class="hljs C">var client = new RestClient("{{BASE_URL}}/v1/api/Provider/SearchBill?searchTerm=xxxxxxxxxxxxxxxx&start=0&end=10");
+                  client.Timeout = -1;
+                  var request = new RestRequest(Method.GET);
+                  request.AddHeader("Authorization", "Bearer  {{YOUR_TOKEN}}");
+                  request.AddHeader("Content-Type", "application/json");
+                  request.AddParameter("application/json", "\r\n",  ParameterType.RequestBody);
+                  IRestResponse response = client.Execute(request);
+                  Console.WriteLine(response.Content);</code></pre>
+                                    </div>
+                                    <div class="tab-pane"
+                                      id="request-api-searchbill-example-Javascript">
+                                      <pre><code class="hljs Javascript">var myHeaders = new Headers();
+                  myHeaders.append("Authorization", "Bearer  {{YOUR_TOKEN}}");
+                  myHeaders.append("Content-Type", "application/json");
+                  var raw = "\n";
+                  var requestOptions = {
+                    method: 'GET',
+                    headers: myHeaders,
+                    body: raw,
+                    redirect: 'follow'
+                  };
+                  
+                  fetch("{{BASE_URL}}/v1/api/Provider/SearchBill?searchTerm=xxxxxxxxxxxxxxxx&start=0&end=10", requestOptions)
+                    .then(response => response.text())
+                    .then(result => console.log(result))
+                    .catch(error => console.log('error', error));</code></pre>
+                                    </div>
+                                    <br><br><br><br> <br><br><br><br>
+                                  </div>
+                                </div>
+                                <h5>Error Response Body</h5>
+                                <pre><code>{
+                                  "code": "400",
+                                  "message": "Bad request"
+                                  }
+                                  OR
+                                  {
+                                  "code": "401",
+                                  "message": "Error Unauthorized."
+                                  }
+                                  
+                                      
+                        </code></pre>
+                              </div>
+                              <!-- END example requests -->
+
+                              <!-- BEGIN example responses -->
+
+                              <!-- END example responses -->
+                              
+                            </div>
+                            
+                          </div>
+                          <h4 id="request-api-searchbill11"></h4>
+                          <!-- END iterate through all requests -->
+						    <div class="split">
+                        <div class="left">
+                          <div class="headling row">
+                            <h4 id="request-api-searchbill">
+                              Web Hook
+                              <a href="#request-api-searchbill"><i
+                                  class="glyphicon glyphicon-link"></i></a>
+                            </h4>
+                          </div>
+
+                          <div class="description">
+                           1- Set your API URL from personal profile page for help Fatwra to request your server.
+						   <br />2- Build post API from your side to accept our requests, with this requirement:-
+						   <br />
+						   Http body model (json):
+                            <table>
+                              <thead>
+                                <tr>
+                                  <th align="left">Parameters</th>
+                                  <th align="left">Description</th>
+                                  <th align="center">Type</th>
+                                </tr>
+                              </thead>
+
+                              <tbody>
+                                <tr>
+                                  <td align="left">PayId</td>
+								  <th align="left">/</th>
+                                  <td align="center">string</td>
+                                </tr>
+								<tr>
+                                  <td align="left">PhoneNumber</td>
+								  <th align="left">/</th>
+                                  <td align="center">string</td>
+                                </tr>
+								<tr>
+                                  <td align="left">CustomerName</td>
+								  <th align="left">/</th>
+                                  <td align="center">string</td>
+                                </tr>
+								<tr>
+                                  <td align="left">ServiceId</td>
+								  <th align="left">/</th>
+                                  <td align="center">Guid</td>
+                                </tr>
+								<tr>
+                                  <td align="left">CreateDate</td>
+								  <th align="left">/</th>
+                                  <td align="center">DateTime</td>
+                                </tr>
+								<tr>
+                                  <td align="left">DueDate</td>
+								  <th align="left">/</th>
+                                  <td align="center">DateTime</td>
+                                </tr>
+								<tr>
+                                  <td align="left">PayDate</td>
+								  <th align="left">/</th>
+                                  <td align="center">DateTime</td>
+                                </tr>	<tr>
+                                  <td align="left">Status</td>
+								  <th align="left">/</th>
+                                  <td align="center">int</td>
+                                </tr><tr>
+                                  <td align="left">Amount</td>
+								  <th align="left">/</th>
+                                  <td align="center">decimal</td>
+                                </tr><tr>
+                                  <td align="left">Note</td>
+								  <th align="left">/</th>
+                                  <td align="center">string</td>
+                                </tr>
+								<tr>
+                                  <td align="left">Key</td>
+								  <th align="left">will shared privately via email</th>
+                                  <td align="center">string</td>
+                                </tr>
+                                
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
+
+                       
+                      </div>
+						  
+						  <div class="split">
+                        <div class="left">
+                          <div class="url row">
+                            <h5 class="req-GET text-lg" >Key</h5>
+                            <div class="col-xs-12">
+                            
+                               simple encrypted string between tasdid and client, for more security to ensure 
+that http request came from tasdid platform.
+
+                            </div>
+                          </div>
+
+                          <div class="headers row">
+                            <h5>DateTime format is: </h5>
+
+                            <div class="col-xs-12">
+                              <code><span class="req-POST text-lg">yyyy-mm-ddThh:mm:ss [ISO 8601]</code><br />
+                               
+                                </div>
+
+                              </div>
+							  
+							         <div class="payload row">
+                    <h5>PayLoad</h5>
+                    <div class="col-xs-12">
+
+
+                      <pre><code>{
+ string PayId
+ string PhoneNumber 
+ string CustomerName 
+ Guid ServiceId 
+ DateTime CreateDate 
+ DateTime DueDate 
+ DateTime PayDate
+ int Status
+ decimal Amount
+ string Note
+ string Key ((will shared privately via email))
+}
+</code></pre>
+                    </div>
+                  </div>
+
+                            </div>
+
+                         
+                            
+                          </div>
+                          <h4 id="request-api-webhook"></h4>
+
+                        </div>
+                        <!-- END iterate through all groups -->
+
+                       
+                      </div>
+
+
+                      <script src="https://code.jquery.com/jquery-2.2.2.min.js"></script>
+                      <script
+                        src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+                      <script>
+    $(document).ready(function () {
+      $("table:not(.table)").addClass('table table-bordered');
+    });
+  </script>
+                    </body>
+
+                  </html>

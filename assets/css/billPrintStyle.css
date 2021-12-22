@@ -1,0 +1,358 @@
+.container {
+    padding-top: 20px
+}
+
+.FormForPrint p {
+    float: right;
+    font-size: 15px;
+    font-weight: 500
+}
+
+.FormForPrint .biller-name {
+    display: inline-block;
+    height: 65px;
+    width: 245px;
+    float: right;
+    margin-top: 8px;
+    margin-right: 10px;
+    padding: 0px;
+    border-radius: 10px;
+    background: #dedede8a;
+    text-align: center;
+    font-size: 15px
+}
+
+.FormForPrint .biller-name .name {
+    border-bottom: 4px double #dedede;
+    background: #31708f;
+    color: white;
+    border-radius: 10px 10px 0 0;
+    padding: 5px;
+}
+
+.FormForPrint .biller-number {
+    display: inline-block;
+    height: 65px;
+    width: 245px;
+    float: right;
+    margin-top: 8px;
+    margin-right: 5px;
+    padding: 0px;
+    border-radius: 10px;
+    background: #dedede8a;
+    text-align: center;
+    font-size: 15px
+}
+
+.FormForPrint .biller-number .number {
+    border-bottom: 4px double #dedede;
+    background: #31708f;
+    color: white;
+    border-radius: 10px 10px 0 0;
+    padding: 5px;
+}
+
+.FormForPrint .biller-salary {
+    display: inline-block;
+    height: 65px;
+    width: 245px;
+    float: right;
+    margin-top: 8px;
+    margin-right: 5px;
+    padding: 0px;
+    border-radius: 10px;
+    background: #dedede8a;
+    text-align: center;
+    font-size: 15px
+}
+
+.FormForPrint .biller-salary .salary {
+    border-bottom: 4px double #dedede;
+    background: #31708f;
+    color: white;
+    border-radius: 10px 10px 0 0;
+    padding: 5px;
+}
+
+.FormForPrint .biller-Card {
+    display: inline-block;
+    height: 65px;
+    width: 245px;
+    float: right;
+    margin-top: 8px;
+    margin-right: 10px;
+    padding: 0px;
+    border-radius: 10px;
+    background: #dedede8a;
+    text-align: center;
+    font-size: 15px
+}
+
+.FormForPrint .biller-Card .Card1 {
+    border-bottom: 4px double #dedede;
+    background: #31708f;
+    color: white;
+    border-radius: 10px 10px 0 0;
+    padding: 5px;
+}
+
+.FormForPrint .biller-status {
+    display: inline-block;
+    height: 65px;
+    width: 245px;
+    float: right;
+    margin-top: 8px;
+    margin-right: 5px;
+    padding: 0px;
+    border-radius: 10px;
+    background: #dedede8a;
+    text-align: center;
+    font-size: 15px
+}
+
+.FormForPrint .biller-service {
+    display: inline-block;
+    height: 65px;
+    width: 245px;
+    float: right;
+    margin-top: 8px;
+    margin-right: 5px;
+    padding: 0px;
+    border-radius: 10px;
+    background: #dedede8a;
+    text-align: center;
+    font-size: 15px
+}
+
+.FormForPrint .biller-service .service {
+    border-bottom: 4px double #dedede;
+    background: #31708f;
+    color: white;
+    border-radius: 10px 10px 0 0;
+    padding: 5px;
+}
+
+.FormForPrint .biller-status .status {
+    border-bottom: 4px double #dedede;
+    background: #31708f;
+    color: white;
+    border-radius: 10px 10px 0 0;
+    padding: 5px;
+}
+
+@media print {
+    @import url('https://fonts.googleapis.com/css?family=Open+Sans');
+    .container {
+        padding-top: 20px
+    }
+
+    .FormForPrint p {
+        float: right;
+        font-size: 15px;
+        font-weight: 500
+    }
+
+    .FormForPrint .biller-name {
+        display: inline-block;
+        height: 65px;
+        width: 245px;
+        float: right;
+        margin-top: 8px;
+        margin-right: 10px;
+        padding: 0px;
+        border-radius: 10px;
+        background: #dedede8a;
+        text-align: center;
+        font-size: 15px
+    }
+
+    .FormForPrint .biller-name .name {
+        border-bottom: 4px double #dedede;
+        background: #067b70;
+        color: white;
+        border-radius: 10px 10px 0 0;
+        padding: 5px;
+    }
+
+    .FormForPrint .biller-number {
+        display: inline-block;
+        height: 65px;
+        width: 245px;
+        float: right;
+        margin-top: 8px;
+        margin-right: 5px;
+        padding: 0px;
+        border-radius: 10px;
+        background: #dedede8a;
+        text-align: center;
+        font-size: 15px
+    }
+
+    .FormForPrint .biller-number .number {
+        border-bottom: 4px double #dedede;
+        background: #067b70;
+        color: white;
+        border-radius: 10px 10px 0 0;
+        padding: 5px;
+    }
+
+    .FormForPrint .biller-salary {
+        display: inline-block;
+        height: 65px;
+        width: 245px;
+        float: right;
+        margin-top: 8px;
+        margin-right: 5px;
+        padding: 0px;
+        border-radius: 10px;
+        background: #dedede8a;
+        text-align: center;
+        font-size: 15px
+    }
+
+    .FormForPrint .biller-salary .salary {
+        border-bottom: 4px double #dedede;
+        background: #067b70;
+        color: white;
+        border-radius: 10px 10px 0 0;
+        padding: 5px;
+    }
+
+    .FormForPrint .biller-Card {
+        display: inline-block;
+        height: 65px;
+        width: 245px;
+        float: right;
+        margin-top: 8px;
+        margin-right: 10px;
+        padding: 0px;
+        border-radius: 10px;
+        background: #dedede8a;
+        text-align: center;
+        font-size: 15px
+    }
+
+    .FormForPrint .biller-Card .Card1 {
+        border-bottom: 4px double #dedede;
+        background: #067b70;
+        color: white;
+        border-radius: 10px 10px 0 0;
+        padding: 5px;
+    }
+
+    .FormForPrint .biller-status {
+        display: inline-block;
+        height: 65px;
+        width: 245px;
+        float: right;
+        margin-top: 8px;
+        margin-right: 5px;
+        padding: 0px;
+        border-radius: 10px;
+        background: #dedede8a;
+        text-align: center;
+        font-size: 15px
+    }
+    .col-md-4 {
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 33.333333%;
+        flex: 0 0 33.333333%;
+        max-width: 33.333333%
+    }
+    .container {
+        min-width: 992px !important
+    }
+    .col-md-5 {
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 41.666667%;
+        flex: 0 0 41.666667%;
+        max-width: 41.666667%
+    }
+    .col-md-2 {
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 16.666667%;
+        flex: 0 0 16.666667%;
+        max-width: 16.666667%
+    }
+    .col-md-12 {
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 100%;
+        flex: 0 0 100%;
+        max-width: 100%
+    }
+    .badge {
+        display: inline-block;
+        padding: .25em .4em;
+        font-size: 75%;
+        font-weight: 700;
+        line-height: 1;
+        text-align: center;
+        white-space: nowrap;
+        vertical-align: baseline;
+        border-radius: .25rem
+    }
+    .col-md-3 {
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 25%;
+        flex: 0 0 25%;
+        max-width: 25%
+    }
+    .col-md-4 {
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 33.333333%;
+        flex: 0 0 33.333333%;
+        max-width: 33.333333%
+    }
+    .mr-auto {
+        margin-left: auto !important
+    }
+    .text-center {
+        text-align: center !important
+    }
+    .container {
+        width: 100%;
+        padding-left: 15px;
+        padding-right: 15px;
+        margin-left: auto;
+        margin-right: auto
+    }
+    .container {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+        margin-left: -15px;
+        margin-right: -15px
+    }
+    .FormForPrint .biller-service {
+        display: inline-block;
+        height: 65px;
+        width: 245px;
+        float: right;
+        margin-top: 8px;
+        margin-right: 5px;
+        padding: 0px;
+        border-radius: 10px;
+        background: #dedede8a;
+        text-align: center;
+        font-size: 15px
+    }
+
+    .FormForPrint .biller-service .service {
+        border-bottom: 4px double #dedede;
+        background: #067b70;
+        color: white;
+        border-radius: 10px 10px 0 0;
+        padding: 5px;
+    }
+
+    .FormForPrint .biller-status .status {
+        border-bottom: 4px double #dedede;
+        background-color: #067b70 !important;
+        color: white;
+        border-radius: 10px 10px 0 0;
+        padding: 5px;
+    }
+
+}
