@@ -23,10 +23,7 @@
        var res1 = res.split("T")
        return res1;
    }
-   $(document).ready(function(){
-       $('[data-toggle="tooltip"]').tooltip();   
-     });
-     var urL = "SQZOHZSPZ6RM";
+     var urL = window.location.href.split('/')[4];
     sendid();
 function sendid(){
    $.ajax({
