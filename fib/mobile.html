@@ -1,0 +1,129 @@
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="author" content="colorlib.com">
+	<title> Payment Gateway</title>
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,600,700" rel="stylesheet" />
+    <link rel="shortcut icon" type="image/png" href="../assets/img/brand/favicon.ico"/>
+    <link href="css/rtl/bootstrap.min.css" rel="stylesheet" />
+     <script src="js/jquery.min.js?version=<?= time() ?>"></script>
+	  <script src='../jsapi/url.js?version=<?= time() ?>' type='text/javascript'></script>
+	<script type="text/javascript" src="js/llqrcode.js?version=<?= time() ?>"></script>
+<script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
+<script type="text/javascript" src="js/webqr.js?version=<?= time() ?>"></script>
+<script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  </head>
+<style>
+  .s009 .con{
+    width: 100%;
+    border: 1px solid #6c757d;
+    
+  }
+  .s009{
+    min-height: 0;
+  }
+</style>
+  <body>
+    <div class="container">
+      <div class="row">
+                  <!-- BEGIN INVOICE -->
+                <div class="col-xs-12">
+                  <div class="grid invoice">
+                    <div class="grid-body">
+                      <div class="invoice-title">
+                        <div class="row">
+                          <div class="col-xs-12">
+                           
+                          </div>
+                        </div>
+                      </div>
+                      <hr>
+                      <div class="row" style="padding:50px;">
+                        <div class="col-xs-6">
+                          <address>
+                            <div id="qrcode" style="min-height: 140px;">
+                          
+                            </div>
+                          </address>
+                        </div>
+                        <div class="col-xs-6 text-right">
+                          <address>
+                            <button class="btn btn-primary" id="qrcode-dwnld-btn"  onclick="ondonwload();" style="    background-color: #80d3f8;
+                            border-color: #80d3f8;margin-left: 20px;"><i class="fas fa-download"></i>تحميل PNG</button>
+                            <button class="btn btn-primary" onclick="copyRequstId();"  style="background: #8bc24a;
+                            border-color: #8bc24a;" ><i class="fas fa-copy"></i> نسخ رمز الــ QR</button>
+            
+                          </address>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-xs-6">
+                          <address>
+                            <strong><span data-toggle="tooltip" id="code"></span></strong>
+                          </address>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-12">
+                          <h3>معلومات الفاتورة</h3>
+                          <table class="table table-striped">
+                            <tbody>
+                              <tr>
+                                <td><strong>اسم المزود</strong></td>
+                                <td class="text-center"  id="providerName"></td>
+                              </tr>
+                              <tr>
+                                <td><strong>الخدمة</strong></td>
+                                <td class="text-center"  id="serviceName"></td>
+                              </tr>
+                              <tr>
+                                <td><strong> المبلغ</strong></td>
+                                <td class="text-center"  id="amount"></td>
+                              </tr>
+                              <tr>
+                                <td><strong>الاسم الكامل</strong></td>
+                                <td class="text-center"  id="customerName"></td>
+                              </tr>
+                              <tr>
+                                <td><strong> رقم الهاتف</strong></td>
+                                <td class="text-center"  id="phoneNumber"></td>
+                              </tr>
+                              <tr>
+                                <td><strong>الحالة</strong></td>
+                                <td class="text-center"  id="status"></td>
+                              </tr>
+                              <tr>
+                                <td><strong> تاريخ الإنشاء</strong></td>
+                                <td class="text-center"  id="createDate"></td>
+                              </tr>
+                              <tr>
+                                <td><strong>تاريخ الإنتهاء</strong></td>
+                                <td class="text-center"  id="dueDate"></td>
+                              </tr>
+                              <tr>
+                                <td><strong>الملاحظات</strong></td>
+                                <td class="text-center"  id="note"></td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>									
+                      </div>
+                      <div class="container" style=" padding-right: 43px;color:#6c757d!important">
+                        <p class="copyright-text pb-0 mb-0">Copyrights © 2021. All
+                          rights reserved by <a href="https://www.thecapital.tech/" target="_blank">TheCapital</a>
+                          </p></span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- END INVOICE -->
+              </div>
+      </div>
+
+      <script type="text/javascript">load();</script>
+      <script src="js/mobile.js"></script>
+  </body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+</html>

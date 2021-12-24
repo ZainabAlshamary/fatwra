@@ -26,7 +26,7 @@
     $(document).ready(function(){
         $('[data-toggle="tooltip"]').tooltip();   
       });
-      var urL = window.location.href.split('/')[4];
+      var urL = "SQZOHZSPZ6RM";
 	 sendid();
  function sendid(){
     $.ajax({
@@ -61,7 +61,7 @@
      var qrcode = new QRCode("qrcode", {
         text: urL,
         width: 270,
-        height: 180,
+        height: 200,
         colorDark: '#000000',
         colorLight: '#ffffff',
         correctlevel: QRCode.correctlevel
