@@ -126,16 +126,15 @@
 
 			<!-- Main Footer-->
 			 <div id="exampleModalLong2" class="modal fade" role="dialog">
-        <div class="modal-dialog modal-lg" style="max-width: 80%;">
+        <div class="modal-dialog modal-lg" style="border-top: 5px solid #2c8db2;
+    border-bottom: 5px solid #2c8db2;">
 
             <div class="modal-content">
-              	<div class="modal-header">
-							<h6 class="modal-title">الفاتورة</h6><button aria-label="Close" class="close" data-dismiss="modal" type="button"><span aria-hidden="true">&times;</span></button>
+              	<div class="modal-header" style="background: #f4f9fb;">
+							<button aria-label="Close" class="close" data-dismiss="modal" type="button"><span aria-hidden="true">&times;</span></button>
 						</div>
-                <div class="modal-body FormForPrint" id="DataCammingWithout">
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">أغلاق</button>
+                <div class="modal-body FormForPrint" id="DataCammingWithout" style="background: url(https://www.cashadvance6online.com/data/archive/img/259814630.png) 0px 52px;
+    background-size: cover;"> 
                 </div>
             </div>
 

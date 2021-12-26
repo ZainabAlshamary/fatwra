@@ -167,35 +167,7 @@ function GetDataByStartEnd() {
         var TextHtml = "",
             j = 1;
         for (var i = 0; i < response.data.length; i++) {
-            if (response.data[i].paidBy == 1) {
-
-                var paidby = `<span class="text-primary">اقساطي</span>`;
-
-            } else if (response.data[i].paidBy == 2) {
-
-                var paidby = `<span class="text-warning">POS</span>`;
-
-            } else if (response.data[i].paidBy == 3) {
-
-                var paidby = `<span class="text-danger">دفع نقدا</span>`;
-
-            } else if (response.data[i].paidBy == 4) {
-
-                var paidby = `<span class="text-info">زين كاش</span>`;
-
-            } else if (response.data[i].paidBy == 6) {
-
-                var paidby = `<span class="text-warning">دفع الكتروني</span>`;
-
-            } else if (response.data[i].paidBy == 5) {
-
-                var paidby = `<span class="text-warning">منافذ كي</span>`;
-
-            } else if (response.data[i].paidBy == 00) {
-
-                var paidby = `<span class="text">/</span>`;
-
-            }
+           
              if((providerId == hrinsid) || (providerId == alaynid) || (providerId == almoshriqid) || (providerId == earthip) || (providerId == qiid) || (providerId == loanid) || (providerId == loanm) || (providerId == loanqi) || (providerId == wafaaid)){
 
                 response.data[i].note = (response.data[i].note || "/");
@@ -215,8 +187,7 @@ function GetDataByStartEnd() {
                                                                 <td>` + response.data[i].phoneNumber + `</td>
                                                                
  <td>` + response.data[i].serviceName + `</td>
- `+tdv + `<td>` + (spittime(response.data[i].payDate ))+ `</td>
-<td>` + paidby + `</td>
+ `+tdv + `
  </tr>`
         }
         $("#BodyData").html(TextHtml);
@@ -256,7 +227,7 @@ function FilterBills1(range) {
     $.ajax({
         "async": true,
         "crossDomain": true,
-        "url": DomainAPI + "Provider/GetBillsByTypeDateTime?from=" + from + "&to=" + to + "&providerId=" + providerId + "&start=" + range + "&end=10&type=3",
+        "url": DomainAPI + "Provider/GetBillsByTypeDateTime?from=" + from + "&to=" + to + "&providerId=" + providerId + "&start=" + range + "&end=10&type=4",
         "method": "GET",
         "headers": {
 
@@ -269,35 +240,7 @@ function FilterBills1(range) {
         var TextHtml = "",
             j = 1;
         for (var i = 0; i < response.data.length; i++) {
-            if (response.data[i].paidBy == 1) {
-
-                var paidby = `<span class="text-primary">اقساطي</span>`;
-
-            } else if (response.data[i].paidBy == 2) {
-
-                var paidby = `<span class="text-warning">POS</span>`;
-
-            } else if (response.data[i].paidBy == 3) {
-
-                var paidby = `<span class="text-danger">دفع نقدا</span>`;
-
-            } else if (response.data[i].paidBy == 4) {
-
-                var paidby = `<span class="text-info">زين كاش</span>`;
-
-            } else if (response.data[i].paidBy == 6) {
-
-                var paidby = `<span class="text-warning">دفع الكتروني</span>`;
-
-            } else if (response.data[i].paidBy == 5) {
-
-                var paidby = `<span class="text-warning">منافذ كي</span>`;
-
-            }else if (response.data[i].paidBy == 00) {
-
-                var paidby = `<span class="text">/</span>`;
-
-            }
+         
                 if((providerId == hrinsid) || (providerId == alaynid) || (providerId == almoshriqid) || (providerId == earthip) || (providerId == qiid) || (providerId == loanid) || (providerId == loanm) || (providerId == loanqi) || (providerId == wafaaid)){
 
                 response.data[i].note = (response.data[i].note || "/");
@@ -317,8 +260,7 @@ function FilterBills1(range) {
                                                                
  <td>` + response.data[i].serviceName + `</td>
  `+tdv + `
- <td>` + (response.data[i].payDate == "0001-01-01T00:00:00" ? '<span style="width: 100%;">/</span>' : '<span style="width: 100%;">' + (spittime(response.data[i].payDate )) + '</span>') + `</td>
-<td>` + paidby + `</td>
+
 </tr>`
         }
         $("#BodyData").html(TextHtml);
@@ -335,7 +277,7 @@ function downloadcsvl() {
     var to = $('.to').val();
 	var notetype =  sessionStorage.getItem('notsas');
     $.ajax({
-        url: DomainAPI + "Provider/GetCsvBillsFile?providerId=" + providerId + "&from=" + from + "&to=" + to + "&type=3&noteName="+ notetype,
+        url: DomainAPI + "Provider/GetCsvBillsFile?providerId=" + providerId + "&from=" + from + "&to=" + to + "&type=4&noteName="+ notetype,
         method: 'GET',
         headers: {
             "Authorization": Token
@@ -362,7 +304,7 @@ function downloadexcel() {
     var to = $('.to').val();
 	var notetype =  sessionStorage.getItem('notsas');
     $.ajax({
-       url: DomainAPI + "Provider/GetExcelBillsFile?providerId=" + providerId + "&from=" + from + "&to=" + to + "&type=3&noteName="+ notetype,
+       url: DomainAPI + "Provider/GetExcelBillsFile?providerId=" + providerId + "&from=" + from + "&to=" + to + "&type=4&noteName="+ notetype,
         method: 'GET',
         headers: {
          "Authorization": Token

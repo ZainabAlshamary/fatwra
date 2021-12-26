@@ -194,7 +194,7 @@ function GetData() {
 
                 var stch = `<button style="border: none;
     font-size: 13px;
-    height: 30px;width:100%" class="btn ripple btn-danger"> ملغاة</button>`;
+    height: 30px;width:100%" class="btn ripple btn-warning"> ملغاة</button>`;
                 var pay = `<button type="button"class="btn ripple btn-danger" disabled style="  
                 font-size: 15px;cursor: no-drop;border: none;"  ><i class="fa fa-money" aria-hidden="true" ></i> دفع </button>`;
 
@@ -400,7 +400,7 @@ function searchBiller() {
 
                 var stch = `<button style="border: none;
     font-size: 13px;
-    height: 30px;width:100%" class="btn ripple btn-danger"> ملغاة</button>`;
+    height: 30px;width:100%" class="btn ripple btn-warning"> ملغاة</button>`;
                 var pay = `<button type="button"class="btn ripple btn-danger" disabled style="  
                 font-size: 15px;cursor: no-drop;border: none;"  ><i class="fa fa-money" aria-hidden="true" ></i> دفع </button>`;
 
@@ -759,6 +759,7 @@ function ShowWithoutFourm(id) {
                                     <meta http-equiv="X-UA-Compatible" content="IE=edge">
                                     <title></title>
                                     <link href="../css/billPrintStyle.css" rel="stylesheet" />
+                                    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
                                 </head>
                                 <body>
                                     <div class="row">
@@ -769,76 +770,89 @@ function ShowWithoutFourm(id) {
                
                
                         <div class="row">
-                            <div class="col-md-9">
-                                <label style="    font-size: 20px;
+                            <div class="col-md-9"><i class="fa fa-circle text-blue-m2 text-xs mr-1" style="float: right;
+                            padding-top: 10px;
+                            padding-left: 5px;
+                            color: #fcdd44;"></i>
+                              <label style="    font-size: 20px;
     font-weight: bold;
     color: #464e54;float: right">اسم الشركة : ` + ItemInformation.data.name + `</label>
                             </div>
-                            <div class="col-md-9">
+                            <div class="col-md-9"><i class="fa fa-circle text-blue-m2 text-xs mr-1" style="float: right;
+                            padding-top: 10px;
+                            padding-left: 5px;
+                            color: #fcdd44;"></i>
                                 <label style="    font-size: 20px;
     font-weight: bold;
     color: #464e54;float: right">رقم الهاتف : ` + ItemInformation.data.phone + `</label>
                             </div>
-                            <div class="col-md-9">
+                            <div class="col-md-9"><i class="fa fa-circle text-blue-m2 text-xs mr-1" style="float: right;
+                            padding-top: 10px;
+                            padding-left: 5px;
+                            color: #fcdd44;"></i>
                                 <label style="    font-size: 20px;
     font-weight: bold;
     color: #464e54;float: right">العنوان : ` + ItemInformation.data.address + `</label>
                             </div>
-                            <div class="col-md-9">
+                            <div class="col-md-9"><i class="fa fa-circle text-blue-m2 text-xs mr-1" style="float: right;
+                            padding-top: 10px;
+                            padding-left: 5px;
+                            color: #fcdd44;"></i>
                                 <label style="    font-size: 20px;
     font-weight: bold;
     color: #464e54;float: right">البريد الالكتروني : ` + ItemInformation.data.email + `</label>
                             </div>
  <div class="col-md-2 text-center">
                         <img src="`+ API +`` + ItemInformation.data.imagePath + `" id="logoimg" width="100" height="100" style="margin-top: -100px;">
-                        <label class="provider-logo" style="color: #365b85;font-size: 20px;font-weight: bold;text-align:center">` + ItemInformation.data.name + `</label>
+                       
                     </div>
                         </div>
                 <hr>
-                <div class="FormForPrint">
-                    <div class="row">
-                        <br>
-                        <div class="col-md-4 biller-name">
-                            <div class="name">الأسم</div>
-                            <div>` + ItemBill.customerName + `</div>
-                        </div>
-                        <div class="col-md-3 biller-number" style="flex: 0 0 29.3%;max-width: 30%;">
-                            <div class="number">رقم الفاتورة</div>
-                            <div>` + ItemBill.payId + `</div>
-                        </div>
-                        <div class="col-md-4 biller-salary">
-                            <div class="salary">المبلغ</div>
-                            <div>` + (addCommas(ItemBill.amount)) + `</div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-4 biller-Card">
-                            <div class="Card1">رقم الهاتف</div>
-                            <div>` + ItemBill.phoneNumber + `</div>
-                        </div>
-                        <div class="col-md-3 biller-service" style="flex: 0 0 29.3%;max-width: 30%;">
-                            <div class="service">نوع الخدمة</div>
-                            <div>` + ItemBill.serviceName + `</div>
-                        </div>
-                        <div class="col-md-4 biller-status">
-                            <div class="status">الحالة</div>
-                            <div>` + stch + `</div>
-                        </div>
-
-                    </div>
-                </div>
-                <br>
-               
-                <label style="font-size:25px; class='notebill' ">` + notebill + `</label>
-                <hr>
-                <p style="float:right; margin-left:150px; font-size: 18px;
-            font-weight: 500; color: #0a4a82;margin-top:10px;font-weight:bold;">تاريخ الإنشاء : ` + ItemBill.createDate.split('T')[0] || +`</p>
-
-                <p style="float:left; margin-left:150px; font-size: 18px;
-            font-weight: 500; color: #0a4a82;margin-top:10px;font-weight:bold;">تاريخ النفاذ : `+ ItemBill.dueDate.split('T')[0] || +`</p>
-
+                <div class="row">
+                <div class="col-md-12">
+                  <table class="table table-bordered">
+                    <tbody>
+                      <tr>
+                        <td><strong> الأسم</strong></td>
+                        <td class="text-center">` + ItemBill.customerName + `</td>
+                      </tr>
+                      <tr>
+                        <td><strong>رقم الفاتورة</strong></td>
+                        <td class="text-center">` + ItemBill.payId + `</td>
+                      </tr>
+                      <tr>
+                        <td><strong> المبلغ</strong></td>
+                        <td class="text-center">` + (addCommas(ItemBill.amount)) + `</td>
+                      </tr>
+                      <tr>
+                        <td><strong>  رقم الهاتف</strong></td>
+                        <td class="text-center" ><div>` + ItemBill.phoneNumber + `</div></td>
+                      </tr>
+                      <tr>
+                        <td><strong>الخدمة</strong></td>
+                        <td class="text-center">` + ItemBill.serviceName + `</td>
+                      </tr>
+                      <tr>
+                        <td><strong>الحالة</strong></td>
+                        <td class="text-center" >` + stch + `</td>
+                      </tr>
+                      <tr>
+                      <td><strong>الوصف</strong></td>
+                      <td class="text-center" >` + notebill + `</td>
+                    </tr>
+                    <tr>
+                      <td><strong>تاريخ الإنشاء</strong></td>
+                      <td class="text-center" >` + ItemBill.createDate.split('T')[0] || +`</td>
+                    </tr>
+                    <tr>
+                    <td><strong>تاريخ النفاذ</strong></td>
+                    <td class="text-center" >`+ ItemBill.dueDate.split('T')[0] || +`</td>
+                  </tr>
+                    </tbody>
+                  </table>
+                </div>									
+              </div>
                 
-            </div>
         </div>
     </div>`;
     $("#DataCammingWithout").html(contents);
@@ -896,108 +910,101 @@ function PrintBill(id) {
     var contents = "";
     contents = ` <div class="row">
 
-        <div class="container" style="margin-right: 2px;">
+        <div class="container" style="margin-right: 2px;border-top: 5px solid #2c8db2;
+        border-bottom: 5px solid #2c8db2;background: url(https://www.cashadvance6online.com/data/archive/img/259814630.png) 0px 300px;
+        background-size: cover;">
 
-            <div class="col-md-12" style="border: 4px dashed">
-                <div class="row">
-                    <div class="col-md-5"  style="background: #067b70;margin-top: 53px;
-    margin-bottom: 14px;width: 50%">
-                    </div>
-                    <div class="col-md-2 text-center">
-                        <label style="
-        font-size: 25px;
-    margin-top: 37px;">فاتورة</label>
-                    </div>
-                   <div class="col-md-5" style="background: #067b70;margin-top: 53px;
-    margin-bottom: 14px;">
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <br>
-                    </div>
-                </div>
-                   <div class="row">
-                    <div class="col-md-12">
-                        <div class="row">
-                            <div class="col-md-8">
-                                <label style="    font-size: 20px;
-    font-weight: bold;
-    color: #000;float: right">اسم الشركة :` + ItemInformation.data.name + `</label>
-                            </div>
-                            <div class="col-md-8">
-                                <label style="    font-size: 20px;
-    font-weight: bold;
-    color: #000;float: right">رقم الهاتف :` + ItemInformation.data.phone + `</label>
-                            </div>
-                            <div class="col-md-8">
-                                <label style="    font-size: 20px;
-    font-weight: bold;
-    color: #000;float: right">العنوان :` + ItemInformation.data.address + `</label>
-                            </div>
-                            <div class="col-md-8">
-                                <label style="    font-size: 20px;
-    font-weight: bold;
-    color: #000;float: right">البريد الالكتروني :` + ItemInformation.data.email + `</label>
-                            </div>
+            <div class="col-md-12">
+            <div class="row">
+            
+<div class="col-md-1 text-center">
+<img src="`+ API +`` + ItemInformation.data.imagePath + `" id="logoimg" width="200" height="150" style="margin-top: 0px;float:left;border-radius:20px">
 
-                    <div class="col-md-2 ml-auto">
-                       <img src="`+ API +`` + ItemInformation.data.imagePath + `" id="logoimg" width="80" height="80" style="margin-top: -145px; ">
-                        <label class="provider-logo center" style="color: #000;font-size: 20px;font-weight: bold;margin-top: -65px;padding-left:12px !important">` + ItemInformation.data.name + `</label>
-                    </div>
-                        </div>
-                    </div>
-                    
+</div>
+                <div class="col-md-9"><i class="fa fa-circle text-blue-m2 text-xs mr-1" style="float: right;
+                padding-top: 10px;
+                padding-left: 5px;
+                color: #fcdd44;"></i>
+                  <label style="    font-size: 20px;
+font-weight: bold;
+color: #464e54;float: right">اسم الشركة : ` + ItemInformation.data.name + `</label>
+                </div>
+                <div class="col-md-9"><i class="fa fa-circle text-blue-m2 text-xs mr-1" style="float: right;
+                padding-top: 10px;
+                padding-left: 5px;
+                color: #fcdd44;"></i>
+                    <label style="    font-size: 20px;
+font-weight: bold;
+color: #464e54;float: right">رقم الهاتف : ` + ItemInformation.data.phone + `</label>
+                </div>
+                <div class="col-md-9"><i class="fa fa-circle text-blue-m2 text-xs mr-1" style="float: right;
+                padding-top: 10px;
+                padding-left: 5px;
+                color: #fcdd44;"></i>
+                    <label style="    font-size: 20px;
+font-weight: bold;
+color: #464e54;float: right">العنوان : ` + ItemInformation.data.address + `</label>
+                </div>
+                <div class="col-md-9"><i class="fa fa-circle text-blue-m2 text-xs mr-1" style="float: right;
+                padding-top: 10px;
+                padding-left: 5px;
+                color: #fcdd44;"></i>
+                    <label style="    font-size: 20px;
+font-weight: bold;
+color: #464e54;float: right">البريد الالكتروني : ` + ItemInformation.data.email + `</label>
+                </div>
+               
                 </div>
 
                 <br>
                 <hr>
                 <div class="FormForPrint">
-                    <div class="row">
-                        <br>
-                        <div class="col-md-4 biller-name">
-                            <div class="name">الأسم</div>
-                            <div style="font-size: 18px;color:#000">${ItemBill.customerName}</div>
-                        </div>
-                        <div class="col-md-3 biller-number" style="flex: 0 0 29.3%;max-width: 30%;">
-                            <div class="number">رقم الفاتورة</div>
-                            <div style="font-size: 18px;color:#000">${ItemBill.payId}</div>
-                        </div>
-                        <div class="col-md-4 biller-salary">
-                            <div class="salary">المبلغ</div>
-                            <div style="font-size: 18px;color:#000">${(addCommas(ItemBill.amount))}</div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-4 biller-Card">
-                            <div class="Card1">رقم الهاتف</div>
-                            <div style="font-size: 18px;color:#000">${ItemBill.phoneNumber}</div>
-                        </div>
-                        <div class="col-md-3 biller-service" style="flex: 0 0 29.3%;max-width: 30%;">
-                            <div class="service">نوع الخدمة</div>
-                            <div style="font-size: 18px;color:#000">` + ItemBill.serviceName + `</div>
-                        </div>
-                        <div class="col-md-4 biller-status">
-                            <div class="status">الحالة</div>
-                            <div style="font-size: 18px">${stch}</div>
-                        </div>
-
-                    </div>
-                </div>
-                <br>
-<label style="font-size:19px; class='notebill' ">` + notebill + `</label>
-                <hr>
-                <p style="float:right; margin-left:150px; font-size: 18px;
-            font-weight: 500; color: #000;margin-top:10px;font-weight:bold;">تاريخ الإنشاء : ${ItemBill.createDate.split('T')[0] || ""}</p>
-<br>
-                <p style="float:right; margin-left:65%; font-size: 18px;
-            font-weight: 500; color: #000;margin-top:10px;font-weight:bold;">تاريخ النفاذ : ${ItemBill.dueDate.split('T')[0] || ""}</p>
-<div class="col-md-2 text-center  ml-auto">.
-
- <div id="qrcode" style="margin-top: -50px;margin-right: 50px;"></div>
-                        
-                    </div>
+                <table class="table table-striped" style="z-index:-11">
+                <tbody>
+                  <tr>
+                    <td><strong> الأسم</strong></td>
+                    <td class="text-center">` + ItemBill.customerName + `</td>
+                  </tr>
+                  <tr>
+                    <td><strong>رقم الفاتورة</strong></td>
+                    <td class="text-center">` + ItemBill.payId + `</td>
+                  </tr>
+                  <tr>
+                    <td><strong> المبلغ</strong></td>
+                    <td class="text-center">` + (addCommas(ItemBill.amount)) + `</td>
+                  </tr>
+                  <tr>
+                    <td><strong>  رقم الهاتف</strong></td>
+                    <td class="text-center" ><div>` + ItemBill.phoneNumber + `</div></td>
+                  </tr>
+                  <tr>
+                    <td><strong>الخدمة</strong></td>
+                    <td class="text-center">` + ItemBill.serviceName + `</td>
+                  </tr>
+                  <tr>
+                    <td><strong>الحالة</strong></td>
+                    <td class="text-center" >` + stch + `</td>
+                  </tr>
+                  <tr>
+                  <td><strong>الوصف</strong></td>
+                  <td class="text-center" >` + notebill + `</td>
+                </tr>
+                <tr>
+                  <td><strong>تاريخ الإنشاء</strong></td>
+                  <td class="text-center" >` + ItemBill.createDate.split('T')[0] || +`</td>
+                </tr>
+                <tr>
+                <td><strong>تاريخ النفاذ</strong></td>
+                <td class="text-center" >`+ ItemBill.dueDate.split('T')[0] || +`</td>
+              </tr>
+                </tbody>
+              </table>
+             
             </div>
+                </div>
+                <hr>
+               
+
         </div>
     </div>`;
 
@@ -1016,13 +1023,14 @@ function PrintBill(id) {
     frameDoc.document.write(`
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
 
 <script>
 (function () {
     var qrcode = new QRCode("qrcode", {
         text: "` + ItemBill.payId + `",
-        width: 90,
-        height: 90,
+        width: 150,
+        height: 150,
         colorDark: '#000000',
         colorLight: '#ffffff',
         correctlevel: QRCode.correctlevel

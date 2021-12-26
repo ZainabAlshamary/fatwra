@@ -62,10 +62,6 @@
 				<a class="nav-link" href="addservice"><span class="shape1"></span><span class="shape2"></span><i class="ti-home sidemenu-icon"></i><span class="sidemenu-label">انشاء خدمة</span></a>
 			</li>
 
-			<li class="nav-item">
-				<a class="nav-link" href="subprovider"><span class="shape1"></span><span class="shape2"></span><i class="ti-home sidemenu-icon"></i><span class="sidemenu-label">الفروع</span></a>
-			</li>
-
 		</ul>
 
 		<ul class="nav" id="subprovider" style="display:none">

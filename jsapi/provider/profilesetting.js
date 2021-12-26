@@ -22,9 +22,6 @@ var Clintid = sessionStorage.getItem("clientid");
 var ClintSectet = sessionStorage.getItem("clientsecret");
 $(".clientId").val(sessionStorage.getItem("clientid"));
 $("#clientSecret").html(`<span>${sessionStorage.getItem("clientsecret")}</span>`);
-// document.getElementById("clientSecret").innerHTML=ClintSectet
-console.log(Clintid);
-console.log(ClintSectet+"gggg");
 
 // console.log = function () {}
 
@@ -102,6 +99,7 @@ function EditDetalis() {
           "data": form
       }).done(function (response) {
           ImagPath = JSON.parse(response).data.fileID;
+          console.log(ImagPath);
        EditDetalis1();
 	       $(".loading").fadeOut();
       }).fail(function () {
@@ -137,7 +135,6 @@ $(".clientSecret").val(sessionStorage.getItem("clientsecret"));
         $(".fileId").val(response.data.fileId);
         $('.name').val(response.data.name);
         $('.address').val(response.data.address);
-        //$('.password').val(response.data.password);
         $('.userName').val(response.data.userName);
         $('.phone').val(response.data.phone);
 		$('.qiCardNo').val(response.data.qiCardNo);

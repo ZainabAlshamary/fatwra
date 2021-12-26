@@ -124,7 +124,7 @@
 										<div class="card-body">
 											<div class="d-flex no-block align-items-center">
 												<div>
-													<span class="text-muted tx-13 mb-3">عدد الفواتير الملغات</span>
+													<span class="text-muted tx-13 mb-3">عدد الفواتير الملغاة</span>
 													<h3 class="m-0 mt-2"  id="cancelledbills" >----</h3>
 												</div>
 												<div class="mr-auto mt-auto">

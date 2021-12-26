@@ -93,8 +93,6 @@
                                                         <th>رقم الهاتف</th>
                                                         <th>اسم الخدمة</th>
 														 <th class="ReferenceNumber" ></th>
-                                                        <th>تاريخ الدفع</th>
-                                                        <th>طريقة الدفع</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody id="BodyData">

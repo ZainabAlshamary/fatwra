@@ -21,7 +21,10 @@
     text-align: center;
     font-size: 15px
 }
-
+#DataCammingWithout{
+    background: url(../img/brand/img-bill.jpg) 0px -30px !important;
+        background-size: cover;
+}
 .FormForPrint .biller-name .name {
     border-bottom: 4px double #dedede;
     background: #31708f;

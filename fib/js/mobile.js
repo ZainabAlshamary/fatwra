@@ -23,7 +23,10 @@
        var res1 = res.split("T")
        return res1;
    }
-     var urL = window.location.href.split('/')[4];
+   $(document).ready(function(){
+       $('[data-toggle="tooltip"]').tooltip();   
+     });
+     var urL =  window.location.href.split('/')[4];
     sendid();
 function sendid(){
    $.ajax({
@@ -57,8 +60,8 @@ function sendid(){
     $("#status").text(status1);
     var qrcode = new QRCode("qrcode", {
        text: urL,
-       width: 270,
-       height: 200,
+       width: 100,
+       height: 100,
        colorDark: '#000000',
        colorLight: '#ffffff',
        correctlevel: QRCode.correctlevel
