@@ -76,7 +76,6 @@ function sendid(){
        colorLight: '#ffffff',
        correctlevel: QRCode.correctlevel
    });
-   
    })
 .fail(function(response) {
 
@@ -92,6 +91,34 @@ function ondonwload(){
    a.download = "Image.png"; //File name Here
    a.click(); //Downloaded file
 }
+
+function ondonwload2(){
+	var canvas = document.querySelectorAll('#qrcode canvas')[0];
+    var dataURL = canvas.toDataURL("image/jpeg", 1.0);
+    downloadImage(dataURL, 'QR_Code_'+makeid(5)+'.jpeg');
+}
+
+// Save | Download image
+function downloadImage(data, filename = 'untitled.jpeg') {
+    var a = document.createElement('a');
+    a.href = data;
+    a.download = filename;
+    document.body.appendChild(a);
+    a.click();
+}
+
+function makeid(length) {
+    var result           = '';
+    var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    var charactersLength = characters.length;
+    for ( var i = 0; i < length; i++ ) {
+      result += characters.charAt(Math.floor(Math.random() * 
+ charactersLength));
+   }
+   return result;
+}
+
+
 function copyRequstId() {
    const selBox = document.createElement('textarea');
    selBox.style.position = 'fixed';
