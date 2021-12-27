@@ -26,14 +26,19 @@
    $(document).ready(function(){
        $('[data-toggle="tooltip"]').tooltip();   
      });
-     var urL =  window.location.pathname;
-     var filename = urL.substring(urL.lastIndexOf('/')+1);
+    
     sendid();
 function sendid(){
+    var url = new URL(window.location.href);
+    var fib = url.searchParams.get("fib_code");
+    if(fib == null || fib == ""){
+        alert("Not Found FIB Code");
+        return;
+    }
    $.ajax({
        "async": true,
        "crossDomain": true,
-       "url": DomainAPI + "Home/Fib?code="+ filename +"",
+       "url": DomainAPI + "Home/Fib?code="+ fib +"",
        "method": "GET",
    }).done(function (response) {
        if(response.data.note == ""){
@@ -60,7 +65,7 @@ function sendid(){
     $("#phoneNumber").text(response.data.phoneNumber);
     $("#status").text(status1);
     var qrcode = new QRCode("qrcode", {
-       text: filename,
+       text: fib,
        width: 100,
        height: 100,
        colorDark: '#000000',

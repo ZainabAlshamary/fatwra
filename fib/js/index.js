@@ -23,14 +23,19 @@
         var res1 = res.split("T")
         return res1;
     }
-    var urL =  window.location.pathname;
-    var filename = urL.substring(urL.lastIndexOf('/')+1);
+    
 	 sendid();
  function sendid(){
+    var url = new URL(window.location.href);
+    var fib = url.searchParams.get("fib_code");
+    if(fib == null || fib == ""){
+        alert("Not Found FIB Code");
+        return;
+    }
     $.ajax({
         "async": true,
         "crossDomain": true,
-		"url": DomainAPI + "Home/Fib?code="+ filename +"",
+		"url": DomainAPI + "Home/Fib?code="+ fib +"",
         "method": "GET",
     }).done(function (response) {
         if(response.data.note == ""){
@@ -57,7 +62,7 @@
      $("#phoneNumber").text(response.data.phoneNumber);
      $("#status").text(status1);
      var qrcode = new QRCode("qrcode", {
-        text: filename,
+        text: fib,
         width: 270,
         height: 200,
         colorDark: '#000000',
