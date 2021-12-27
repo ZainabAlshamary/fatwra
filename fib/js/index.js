@@ -23,13 +23,14 @@
         var res1 = res.split("T")
         return res1;
     }
-      var urL = window.location.href.split('/')[4];
+    var urL =  window.location.pathname;
+    var filename = urL.substring(urL.lastIndexOf('/')+1);
 	 sendid();
  function sendid(){
     $.ajax({
         "async": true,
         "crossDomain": true,
-		"url": DomainAPI + "Home/Fib?code="+ urL +"",
+		"url": DomainAPI + "Home/Fib?code="+ filename +"",
         "method": "GET",
     }).done(function (response) {
         if(response.data.note == ""){
@@ -56,7 +57,7 @@
      $("#phoneNumber").text(response.data.phoneNumber);
      $("#status").text(status1);
      var qrcode = new QRCode("qrcode", {
-        text: urL,
+        text: filename,
         width: 270,
         height: 200,
         colorDark: '#000000',
@@ -85,14 +86,14 @@
     selBox.style.left = '0';
     selBox.style.top = '0';
     selBox.style.opacity = '0';
-    selBox.value = urL;
+    selBox.value = filename;
     document.body.appendChild(selBox);
     selBox.focus();
     selBox.select();
     document.execCommand('copy');
     document.body.removeChild(selBox);
     $('#code').css('display','inline');
-    $("#code").text(urL);
+    $("#code").text(filename);
   }
   
 
