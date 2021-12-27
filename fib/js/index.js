@@ -27,9 +27,13 @@
 	 sendid();
  function sendid(){
     var url = new URL(window.location.href);
-    var fib = url.searchParams.get("fib_code");
+    var fib = url.searchParams.get("c");
     if(fib == null || fib == ""){
-        alert("Not Found FIB Code");
+        `<tr class="text-center">
+            <td colspan="100%">
+                <p class="h5 text-danger">Not Found FIB Code</p>
+            </td>
+        </tr>`
         return;
     }
     $.ajax({
@@ -91,14 +95,14 @@
     selBox.style.left = '0';
     selBox.style.top = '0';
     selBox.style.opacity = '0';
-    selBox.value = filename;
+    selBox.value = fib;
     document.body.appendChild(selBox);
     selBox.focus();
     selBox.select();
     document.execCommand('copy');
     document.body.removeChild(selBox);
     $('#code').css('display','inline');
-    $("#code").text(filename);
+    $("#code").text(fib);
   }
   
 
